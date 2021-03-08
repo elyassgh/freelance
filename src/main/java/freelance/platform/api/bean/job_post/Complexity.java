@@ -1,4 +1,4 @@
-package freelance.platform.api.bean.proposal_contrat;
+package freelance.platform.api.bean.job_post;
 
 import java.io.Serializable;
 
@@ -13,16 +13,17 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "proposalStatusCatalogs")
-public class ProposalStatusCatalog implements Serializable {
+@Table(name = "complexity_dict")
+public class Complexity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "complexity_id")
     private Long id;
-    @Column(nullable = false, length = 128)
-    private String statusName;
 
+    @Column(name = "complexity_text", nullable = false, unique = true)
+    private String complexityText;
 
 }

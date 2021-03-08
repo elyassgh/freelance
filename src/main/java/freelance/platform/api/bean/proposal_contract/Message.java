@@ -1,8 +1,8 @@
-package freelance.platform.api.bean.proposal_contrat;
+package freelance.platform.api.bean.proposal_contract;
 
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,9 +10,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import freelance.platform.api.bean.client.Manager;
+import freelance.platform.api.bean.freelancer.Freelancer;
 import lombok.Data;
 
 @Entity
@@ -24,15 +28,24 @@ public class Message implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "message_id")
     private Long id;
 
     @Column(name = "message_time", nullable = false)
-    private Instant messageTime;
-
+    private LocalDateTime messageTime;
 
     @Column(name = "message_text", nullable = false)
     private String messageText;
 
     @OneToMany(mappedBy = "message")
     private List<Attachement> attachements;
+
+    @ManyToOne
+    @JoinColumn(name = "freelancer_id")
+    private Freelancer freelance;
+
+    @ManyToOne
+    @JoinColumn(name = "hire_manager_id")
+    private Manager manager;
+
 }

@@ -1,4 +1,4 @@
-package freelance.platform.api.bean.proposal_contrat;
+package freelance.platform.api.bean.proposal_contract;
 
 import java.io.Serializable;
 
@@ -31,6 +31,5 @@ public class Attachement implements Serializable {
     @ManyToOne
     @JoinColumn(name = "message_id", nullable = false)
     private Message message;
-
 
 }

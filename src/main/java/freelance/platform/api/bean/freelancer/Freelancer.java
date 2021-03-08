@@ -19,6 +19,7 @@ import javax.persistence.Table;
 
 import freelance.platform.api.bean.Skill;
 import freelance.platform.api.bean.UserAccount;
+import freelance.platform.api.bean.proposal_contract.Contract;
 import lombok.Data;
 
 @Entity
@@ -56,6 +57,9 @@ public class Freelancer implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "skill_id"))
     private List<Skill> skills;
     
+    @OneToMany(mappedBy = "freelancer")
+    private List<Contract> contracts;
+
     public Freelancer(UserAccount account, LocalDate registrationDate, String location, String bio)
     {
         this.account = account;
@@ -64,6 +68,7 @@ public class Freelancer implements Serializable {
         this.bio = bio;
         this.certifications = new ArrayList<Certification>();
         this.skills = new ArrayList<Skill>();
+        this.contracts = new ArrayList<Contract>();
     }
     
 }

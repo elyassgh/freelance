@@ -34,10 +34,10 @@ public class TestResult implements Serializable {
     @JoinColumn(name = "test_id")
     private Test test;
 
-    @Column(nullable = false)
+    @Column(name = "start_time", nullable = false)
     private LocalDateTime startTime;
 
-    @Column(nullable = true)
+    @Column(name = "end_time", nullable = true)
     private LocalDateTime endTime;
 
     // URLs over 2,000 characters will not work in the most web browsers

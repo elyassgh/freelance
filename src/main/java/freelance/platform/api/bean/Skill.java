@@ -18,7 +18,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "skills")
+@Table(name = "skills_dict")
 public class Skill implements Serializable {
     
     private static final long serialVersionUID = 1L;
