@@ -1,6 +1,7 @@
 package freelance.platform.api.bean;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import lombok.Data;
 
@@ -37,5 +41,8 @@ public class UserAccount implements Serializable {
 
     @Column(nullable = false)
     private String lastName;
+
+    @CreatedDate LocalDateTime createdDate;
+	@LastModifiedDate LocalDateTime modifiedDate;
 
 }
