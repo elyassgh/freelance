@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 import freelance.platform.api.bean.Skill;
 import freelance.platform.api.bean.UserAccount;
-import freelance.platform.api.bean.proposal_contract.Contract;
+import freelance.platform.api.bean.proposal.Contract;
 import lombok.Data;
 
 @Entity

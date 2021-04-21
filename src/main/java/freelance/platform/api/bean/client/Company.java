@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import freelance.platform.api.bean.proposal_contract.Contract;
+import freelance.platform.api.bean.proposal.Contract;
 import lombok.Data;
 
 @Entity

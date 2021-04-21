@@ -1,4 +1,4 @@
-package freelance.platform.api.bean.proposal_contract;
+package freelance.platform.api.bean.proposal;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import freelance.platform.api.bean.PaymentType;
-import freelance.platform.api.bean.job_post.Job;
+import freelance.platform.api.bean.job.Job;
 import lombok.Data;
 
 @Entity

@@ -1,4 +1,4 @@
-package freelance.platform.api.bean.job_post;
+package freelance.platform.api.bean.job;
 
 import java.io.Serializable;
 
@@ -13,17 +13,17 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "expected_duration_dict")
-public class Duration implements Serializable {
-    
+@Table(name = "complexity_dict")
+public class Complexity implements Serializable {
+
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "expected_duration_id")
+    @Column(name = "complexity_id")
     private Long id;
-    
-    @Column(name = "duration_text", nullable = false, unique = true)
-    private String durationText;
+
+    @Column(name = "complexity_text", nullable = false, unique = true)
+    private String complexityText;
 
 }

@@ -1,4 +1,4 @@
-package freelance.platform.api.bean.proposal_contract;
+package freelance.platform.api.bean.proposal;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package freelance.platform.api.bean.job_post;
+package freelance.platform.api.bean.job;
 
 import java.io.Serializable;
 import java.util.List;
@@ -18,7 +18,7 @@ import javax.persistence.Table;
 import freelance.platform.api.bean.PaymentType;
 import freelance.platform.api.bean.Skill;
 import freelance.platform.api.bean.client.Manager;
-import freelance.platform.api.bean.proposal_contract.Proposal;
+import freelance.platform.api.bean.proposal.Proposal;
 import lombok.Data;
 
 @Entity
