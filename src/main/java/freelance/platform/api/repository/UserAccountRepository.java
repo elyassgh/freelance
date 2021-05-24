@@ -10,7 +10,7 @@ import freelance.platform.api.bean.UserAccount;
 @Repository
 public interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
 
-    UserAccount findByUserName(String username);
+    UserAccount findByUserName(String userName);
 
     UserAccount findByEmail(String email);
 
