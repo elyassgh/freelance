@@ -10,8 +10,6 @@ import freelance.platform.api.bean.Skill;
 @Repository
 public interface SkillRepository extends JpaRepository<Skill, Long> {
 
-    List<Skill> findAll();
-
     List<Skill> findBySkillName(String skillName);
 
 }
