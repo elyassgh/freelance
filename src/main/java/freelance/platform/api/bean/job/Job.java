@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import freelance.platform.api.bean.PaymentType;
 import freelance.platform.api.bean.Skill;
 import freelance.platform.api.bean.client.Manager;
@@ -49,7 +50,7 @@ public class Job implements Serializable {
     private Duration duration;
 
     @ManyToOne
-    @JoinColumn(name = "payement_type_id" , nullable = false)
+    @JoinColumn(name = "payment_type_id" , nullable = false)
     private PaymentType paymentType;
 
     @Column(name = "payment_amount" , nullable = false)
@@ -65,7 +66,8 @@ public class Job implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "skill_id" , referencedColumnName = "skill_id"))
     private List<Skill> otherSkills;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "job")
-    private List<Proposal> propasals;
+    private List<Proposal> proposals;
 
 }

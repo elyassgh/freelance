@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "payementTypes_dict") 
+@Table(name = "payment_types_dict")
 public class PaymentType implements Serializable {
 
     private static final long serialVersionUID = 1L;

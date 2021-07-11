@@ -25,7 +25,7 @@ public class Proposal implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "propsal_id")
+    @Column(name = "proposal_id")
     private Long id;
 
     @Column(name = "proposal_time", nullable = false)
@@ -48,7 +48,7 @@ public class Proposal implements Serializable {
     private Job job;
 
     @ManyToOne
-    @JoinColumn(name = "payement_type_id", nullable = false)
+    @JoinColumn(name = "payment_type_id", nullable = false)
     private PaymentType paymentType;
 
     @Column(name = "payment_amount" , nullable = false)

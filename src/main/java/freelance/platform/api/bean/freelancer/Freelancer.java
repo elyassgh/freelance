@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import freelance.platform.api.bean.Skill;
 import freelance.platform.api.bean.UserAccount;
 import freelance.platform.api.bean.proposal.Contract;
@@ -48,6 +49,7 @@ public class Freelancer implements Serializable {
     @Column(length = 512)
     private String bio;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "freelancer")
     private List<Certification> certifications;
 

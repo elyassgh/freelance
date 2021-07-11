@@ -38,7 +38,7 @@ public class Message implements Serializable {
     private String messageText;
 
     @OneToMany(mappedBy = "message")
-    private List<Attachement> attachements;
+    private List<Attachment> attachments;
 
     @ManyToOne
     @JoinColumn(name = "freelancer_id")

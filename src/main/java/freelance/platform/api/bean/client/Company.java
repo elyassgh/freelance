@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import freelance.platform.api.bean.proposal.Contract;
 import lombok.Data;
 
@@ -26,9 +27,14 @@ public class Company implements Serializable {
    @Column(name = "company_id")
    private Long id;
 
+   @Column(name = "company_name")
+   private String name;
+
+   @JsonIgnore
    @OneToMany(mappedBy = "company")
    private List<Manager> managers;
 
+   @JsonIgnore
    @OneToMany(mappedBy = "company")
    private List<Contract> contracts;
 

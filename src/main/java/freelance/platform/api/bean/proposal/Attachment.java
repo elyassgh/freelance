@@ -11,23 +11,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "attachements")
-public class Attachement implements Serializable {
+@Table(name = "attachments")
+public class Attachment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "attachement_id")
+    @Column(name = "attachment_id")
     private Long id;
 
     @Column(nullable = false, length = 2000)
-    private String attachementLink;
+    private String attachmentLink;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "message_id", nullable = false)
     private Message message;

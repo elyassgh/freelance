@@ -43,7 +43,7 @@ public class Contract implements Serializable {
     private Freelancer freelancer;
 
     @ManyToOne
-    @JoinColumn(name = "payement_type_id", nullable = false)
+    @JoinColumn(name = "payment_type_id", nullable = false)
     private PaymentType paymentType;
 
     @Column(name = "payment_amount" , nullable = false)

@@ -7,5 +7,5 @@ import freelance.platform.api.bean.freelancer.Test;
 
 @Repository
 public interface TestRepository extends JpaRepository<Test, Long> {
-
+    Test findByTestNameContains(String name);
 }

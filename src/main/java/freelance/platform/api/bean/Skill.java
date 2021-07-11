@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import freelance.platform.api.bean.freelancer.Freelancer;
 import lombok.Data;
 
@@ -31,7 +32,8 @@ public class Skill implements Serializable {
     @Column(name = "skill_name", unique = true , nullable = false)
     private String skillName;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "skills")
+    @JsonIgnore
+    @ManyToMany(mappedBy = "skills")
     private List<Freelancer> freelancers;
 
     public Skill(String skillName) {
