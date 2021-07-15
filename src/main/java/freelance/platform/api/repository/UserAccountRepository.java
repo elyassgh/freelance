@@ -5,10 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import freelance.platform.api.bean.UserAccount;
 
+import java.util.Optional;
+
 @Repository
 public interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
 
-    UserAccount findByUserName(String userName);
-    UserAccount findByEmail(String email);
+    Optional<UserAccount> findByUserName(String userName);
+    Optional<UserAccount> findByEmail(String email);
 
 }

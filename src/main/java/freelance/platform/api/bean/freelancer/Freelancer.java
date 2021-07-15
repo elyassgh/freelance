@@ -42,7 +42,7 @@ public class Freelancer implements Serializable {
     @Column(nullable = false)
     private LocalDate registrationDate;
 
-    // County (Ex : Morroco)
+    // County (Ex : Morocco)
     @Column(nullable = false)
     private String location;
 
@@ -58,7 +58,8 @@ public class Freelancer implements Serializable {
         joinColumns = @JoinColumn(name = "freelancer_id" , referencedColumnName = "freelancer_id" ),
         inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "skill_id"))
     private List<Skill> skills;
-    
+
+    @JsonIgnore
     @OneToMany(mappedBy = "freelancer")
     private List<Contract> contracts;
 

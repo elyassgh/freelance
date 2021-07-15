@@ -8,12 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import freelance.platform.api.bean.proposal.Contract;
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
 @Repository
 public interface ContractRepository extends JpaRepository<Contract, Long> {
-    Contract findByProposal(Proposal proposal);
+
+    Optional<Contract> findByProposal(Proposal proposal);
     Stream<Contract> findByCompany(Company company);
     Stream<Contract> findByFreelancer(Freelancer freelancer);
-
 }
