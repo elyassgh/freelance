@@ -37,7 +37,7 @@ public class SkillServiceImpl implements SkillService {
 
     @Override
     public SkillDto findBySkillName(String skillName) {
-        return null;
+        return converter.toDto(repository.findBySkillName(skillName));
     }
 
     @Override

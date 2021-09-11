@@ -1,23 +1,23 @@
 package freelance.platform.api.service;
 
 import freelance.platform.api.bean.PaymentType;
+import freelance.platform.api.dto.PaymentTypeDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 public interface PaymentTypeService {
 
-    public PaymentType save(PaymentType paymentType);
-    public PaymentType update(int id, PaymentType paymentType);
+    public PaymentTypeDto save(PaymentTypeDto dto);
+    public PaymentTypeDto update(long id, PaymentTypeDto dto);
 
-    public PaymentType findByTypeName(String typeName);
-    public Stream<PaymentType> findByTypeNameContains(String typeName);
-    public Optional<PaymentType> findById(int id);
-    public Page<PaymentType> findAll(Pageable pageable);
+    public PaymentTypeDto findByTypeName(String typeName);
+    public Stream<PaymentTypeDto> findByTypeNameContains(String typeName);
+    public Optional<PaymentType> findById(long id);
+    public Page<PaymentTypeDto> findAll(Pageable pageable);
 
-    public PaymentType delete(int id);
+    public void delete(long id);
 
 }

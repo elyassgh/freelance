@@ -36,7 +36,7 @@ public class SkillConverter {
         return skillsPage.map(this::toDto);
     }
 
-    public Stream<SkillDto> toDtosStream(Stream<Skill> skillsPage) {
-        return skillsPage.map(this::toDto);
+    public Stream<SkillDto> toDtosStream(Stream<Skill> skillsStream) {
+        return skillsStream.map(this::toDto);
     }
 }
