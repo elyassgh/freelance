@@ -1,6 +1,7 @@
 package freelance.platform.api.service;
 
 import freelance.platform.api.bean.Skill;
+import freelance.platform.api.dto.SkillDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -9,14 +10,14 @@ import java.util.stream.Stream;
 
 public interface SkillService {
 
-    public void save(Skill skill);
-    public void update(int id, Skill skill);
+    public SkillDto save(SkillDto dto);
+    public SkillDto update(long id, SkillDto dto);
 
-    public Skill findBySkillName(String skillName);
-    public Stream<Skill> findBySkillNameContains(String skillName);
-    public Optional<Skill> findById(int id);
-    public Page<Skill> findAll(Pageable pageable);
+    public SkillDto findBySkillName(String skillName);
+    public Stream<SkillDto> findBySkillNameContains(String skillName);
+    public Optional<Skill> findById(long id);
+    public Page<SkillDto> findAll(Pageable pageable);
 
-    public void delete(int id);
+    public void delete(long id);
 
 }

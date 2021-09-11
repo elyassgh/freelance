@@ -1,6 +1,7 @@
 package freelance.platform.api.service;
 
 import freelance.platform.api.bean.UserAccount;
+import freelance.platform.api.dto.UserAccountDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -8,14 +9,14 @@ import java.util.Optional;
 
 public interface UserAccountService {
 
-    public UserAccount save(UserAccount account);
-    public UserAccount update(int id, UserAccount account);
+    public UserAccountDto save(UserAccountDto dto);
+    public UserAccountDto update(long id, UserAccountDto dto);
 
-    public Optional<UserAccount> findByUserName(String userName);
-    public Optional<UserAccount> findByEmail(String email);
-    public Optional<UserAccount> findById(int id);
-    public Page<UserAccount> findAll(Pageable pageable);
+    public UserAccountDto findByUserName(String userName);
+    public UserAccountDto findByEmail(String email);
+    public Optional<UserAccount> findById(long id);
+    public Page<UserAccountDto> findAll(Pageable pageable);
 
-    public UserAccount delete(int id);
+    public void delete(long id);
 
 }

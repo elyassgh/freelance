@@ -10,14 +10,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import lombok.Data;
 
 @Entity
-@Data
 @Table(name = "user_accounts")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserAccount implements Serializable {
 
     private static final long serialVersionUID = 1L;
