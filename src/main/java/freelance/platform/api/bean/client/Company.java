@@ -13,11 +13,17 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import freelance.platform.api.bean.proposal.Contract;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @Table(name = "companies")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Company implements Serializable {
 
    private static final long serialVersionUID = 1L;
@@ -30,11 +36,9 @@ public class Company implements Serializable {
    @Column(name = "company_name")
    private String name;
 
-   @JsonIgnore
    @OneToMany(mappedBy = "company")
    private List<Manager> managers;
 
-   @JsonIgnore
    @OneToMany(mappedBy = "company")
    private List<Contract> contracts;
 

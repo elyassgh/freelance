@@ -1,4 +1,4 @@
-package freelance.platform.api.dto;
+package freelance.platform.api.dto.client;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SkillDto {
+public class CompanyDto {
 
-    private String skillName;
+    private String name;
 
 }

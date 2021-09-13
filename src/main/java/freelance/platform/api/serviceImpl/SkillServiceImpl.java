@@ -31,7 +31,6 @@ public class SkillServiceImpl implements SkillService {
     public SkillDto update(long id, SkillDto dto) {
         Skill skill = repository.findById(id).orElseThrow(() -> new RuntimeException("not found !"));
         skill.setSkillName(dto.getSkillName());
-        skill.setFreelancers(dto.getFreelancers());
         return converter.toDto(repository.save(skill));
     }
 

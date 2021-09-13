@@ -14,7 +14,6 @@ public class SkillConverter {
 
     public Skill toEntity(SkillDto dto) {
         return Skill.builder().skillName(dto.getSkillName())
-                .freelancers(dto.getFreelancers())
                 .build();
     }
 
@@ -24,7 +23,6 @@ public class SkillConverter {
 
     public SkillDto toDto(Skill skill) {
         return SkillDto.builder().skillName(skill.getSkillName())
-                .freelancers(skill.getFreelancers())
                 .build();
     }
 
