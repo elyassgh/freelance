@@ -15,6 +15,7 @@ public interface UserAccountService {
     public UserAccountDto findByUserName(String userName);
     public UserAccountDto findByEmail(String email);
     public Optional<UserAccount> findById(long id);
+    public UserAccountDto findByIdDto(long id);
     public Page<UserAccountDto> findAll(Pageable pageable);
 
     public void delete(long id);

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import freelance.platform.api.bean.job.Job;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -16,5 +17,4 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     Stream<Job> findBySkill(Skill skill);
     Stream<Job> findByPaymentAmountIsGreaterThanEqual(Double minValue);
     Stream<Job> findByDescriptionContains(String query);
-    Stream<Job> findByOtherSkillsContaining(List<Skill> skills);
 }
