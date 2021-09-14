@@ -14,12 +14,18 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import freelance.platform.api.bean.UserAccount;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-@Data
 @Table(name = "hire_managers")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Manager implements Serializable {
 
     private static final long serialVersionUID = 1L;

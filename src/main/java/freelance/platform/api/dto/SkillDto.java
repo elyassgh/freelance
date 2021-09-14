@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SkillDto {
 
+    private Long id;
     private String skillName;
 
 }

@@ -13,7 +13,8 @@ import java.util.stream.Stream;
 public class CompanyConverter {
 
     public Company toEntity(CompanyDto dto) {
-        return Company.builder().name(dto.getName())
+        return Company.builder().id(dto.getId())
+                .name(dto.getName())
                 .build();
     }
 
@@ -23,7 +24,8 @@ public class CompanyConverter {
 
 
     public CompanyDto toDto(Company company) {
-        return CompanyDto.builder().name(company.getName())
+        return CompanyDto.builder().id(company.getId())
+                .name(company.getName())
                 .build();
     }
 

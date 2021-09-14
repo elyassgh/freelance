@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PaymentTypeDto {
 
+    private Long id;
     private String typeName;
 
 }

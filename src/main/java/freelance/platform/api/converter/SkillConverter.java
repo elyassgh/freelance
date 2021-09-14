@@ -13,7 +13,8 @@ import java.util.stream.Stream;
 public class SkillConverter {
 
     public Skill toEntity(SkillDto dto) {
-        return Skill.builder().skillName(dto.getSkillName())
+        return Skill.builder().id(dto.getId())
+                .skillName(dto.getSkillName())
                 .build();
     }
 
@@ -22,7 +23,8 @@ public class SkillConverter {
     }
 
     public SkillDto toDto(Skill skill) {
-        return SkillDto.builder().skillName(skill.getSkillName())
+        return SkillDto.builder().id(skill.getId())
+                .skillName(skill.getSkillName())
                 .build();
     }
 

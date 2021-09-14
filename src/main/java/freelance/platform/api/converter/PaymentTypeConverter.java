@@ -13,7 +13,8 @@ import java.util.stream.Stream;
 public class PaymentTypeConverter {
 
     public PaymentType toEntity(PaymentTypeDto dto) {
-        return PaymentType.builder().typeName(dto.getTypeName())
+        return PaymentType.builder().id(dto.getId())
+                .typeName(dto.getTypeName())
                 .build();
     }
 
@@ -22,7 +23,8 @@ public class PaymentTypeConverter {
     }
 
     public PaymentTypeDto toDto(PaymentType paymentType) {
-        return PaymentTypeDto.builder().typeName(paymentType.getTypeName())
+        return PaymentTypeDto.builder().id(paymentType.getId())
+                .typeName(paymentType.getTypeName())
                 .build();
     }
 

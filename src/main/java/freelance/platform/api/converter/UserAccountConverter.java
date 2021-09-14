@@ -12,7 +12,8 @@ import java.util.stream.Collectors;
 public class UserAccountConverter {
 
     public UserAccount toEntity(UserAccountDto dto) {
-        return UserAccount.builder().userName(dto.getUserName())
+        return UserAccount.builder().id(dto.getId())
+                .userName(dto.getUserName())
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())
                 .email(dto.getEmail())
@@ -25,7 +26,8 @@ public class UserAccountConverter {
     }
 
     public UserAccountDto toDto(UserAccount userAccount) {
-        return UserAccountDto.builder().userName(userAccount.getUserName())
+        return UserAccountDto.builder().id(userAccount.getId())
+                .userName(userAccount.getUserName())
                 .firstName(userAccount.getFirstName())
                 .lastName(userAccount.getLastName())
                 .email(userAccount.getEmail())

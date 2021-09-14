@@ -13,7 +13,7 @@ import freelance.platform.api.bean.client.Manager;
 public interface ManagerRepository extends JpaRepository<Manager, Long> {
 
     Stream<Manager> findByCompany(Company company);
-    Stream<Manager> findByLocation(String Location);
+    Stream<Manager> findByLocationContains(String Location);
     Manager findByAccount(UserAccount userAccount);
 
 }

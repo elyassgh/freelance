@@ -33,13 +33,13 @@ public class UserAccount implements Serializable {
     @Column(name = "user_account_id")
     private Long id;
 
-    @Column(unique = true , nullable = false)
+    @Column(unique = true, nullable = false)
     private String userName;
 
     @Column(nullable = false)
     private String password;
 
-    @Column(unique = true , nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @Column(nullable = false)
@@ -48,7 +48,10 @@ public class UserAccount implements Serializable {
     @Column(nullable = false)
     private String lastName;
 
-    @CreatedDate LocalDateTime createdDate;
-	@LastModifiedDate LocalDateTime modifiedDate;
+    @CreatedDate
+    private LocalDateTime createdDate;
+
+    @LastModifiedDate
+    private LocalDateTime modifiedDate;
 
 }
