@@ -21,11 +21,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import freelance.platform.api.bean.Skill;
 import freelance.platform.api.bean.UserAccount;
 import freelance.platform.api.bean.proposal.Contract;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @Table(name = "freelancers")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Freelancer implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,7 +55,6 @@ public class Freelancer implements Serializable {
     @Column(length = 512)
     private String bio;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "freelancer")
     private List<Certification> certifications;
 
@@ -59,19 +64,7 @@ public class Freelancer implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "skill_id"))
     private List<Skill> skills;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "freelancer")
     private List<Contract> contracts;
-
-    public Freelancer(UserAccount account, LocalDate registrationDate, String location, String bio)
-    {
-        this.account = account;
-        this.registrationDate = registrationDate;
-        this.location = location;
-        this.bio = bio;
-        this.certifications = new ArrayList<Certification>();
-        this.skills = new ArrayList<Skill>();
-        this.contracts = new ArrayList<Contract>();
-    }
     
 }

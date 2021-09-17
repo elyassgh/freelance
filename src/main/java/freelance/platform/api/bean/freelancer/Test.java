@@ -9,11 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @Table(name = "tests")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Test implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -30,9 +36,4 @@ public class Test implements Serializable {
     @Column(nullable = false , length = 2000)
     private String testLink;
 
-    public Test(String testName, String testLink) {
-        this.testName = testName;
-        this.testLink = testLink;
-    }
-    
 }

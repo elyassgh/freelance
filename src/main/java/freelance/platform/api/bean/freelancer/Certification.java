@@ -13,11 +13,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @Table(name = "certifcations")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Certification implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -42,20 +48,9 @@ public class Certification implements Serializable {
     
     @Column(nullable = false)
     private LocalDate dateEarned;
-    
     // URLs over 2,000 characters will not work in the most web browsers
     @Column(length = 2000)
-    private String certifactionLink;
+    private String certificationLink;
 
-
-    public Certification(Freelancer freelancer, String certificationName, String certificationProvider,
-            String description, LocalDate dateEarned, String certifactionLink) {
-        this.freelancer = freelancer;
-        this.certificationName = certificationName;
-        this.certificationProvider = certificationProvider;
-        this.description = description;
-        this.dateEarned = dateEarned;
-        this.certifactionLink = certifactionLink;
-    }
 
 }

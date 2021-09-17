@@ -16,6 +16,7 @@ public interface PaymentTypeService {
     public PaymentTypeDto findByTypeName(String typeName);
     public Stream<PaymentTypeDto> findByTypeNameContains(String typeName);
     public Optional<PaymentType> findById(long id);
+    public PaymentTypeDto findByIdDto(long id);
     public Page<PaymentTypeDto> findAll(Pageable pageable);
 
     public void delete(long id);

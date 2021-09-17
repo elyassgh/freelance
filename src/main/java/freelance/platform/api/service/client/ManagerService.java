@@ -18,6 +18,7 @@ public interface ManagerService {
     public Stream<ManagerDto> findByLocation(String location);
     public ManagerDto findByAccount(Long userAccountId);
     public Optional<Manager> findById(long id);
+    public ManagerDto findByIdDto(long id);
     public Page<ManagerDto> findAll(Pageable pageable);
 
     public void delete(long id);

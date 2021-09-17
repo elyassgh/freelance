@@ -45,6 +45,12 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public CompanyDto findByIdDto(long id) {
+        Company company = findById(id).orElseThrow(() -> new RuntimeException("not found !"));
+        return converter.toDto(company);
+    }
+
+    @Override
     public Page<CompanyDto> findAll(Pageable pageable) {
         return converter.toDtosPage(repository.findAll(pageable));
     }

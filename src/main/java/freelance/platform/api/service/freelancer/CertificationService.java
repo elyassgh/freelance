@@ -2,6 +2,7 @@ package freelance.platform.api.service.freelancer;
 
 import freelance.platform.api.bean.freelancer.Certification;
 import freelance.platform.api.bean.freelancer.Freelancer;
+import freelance.platform.api.dto.freelancer.CertificationDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -10,15 +11,16 @@ import java.util.stream.Stream;
 
 public interface CertificationService {
 
-    public Certification save(Certification certification);
-    public Certification update(int id, Certification certification);
+    public CertificationDto save(CertificationDto dto);
+    public CertificationDto update(long id, CertificationDto dto);
 
-    public Stream<Certification> findByCertificationNameContains(String name);
-    public Stream<Certification> findByCertificationProviderContains(String provider);
-    public Stream<Certification> findByFreelancer(Freelancer freelancer);
-    public Optional<Certification> findById(int id);
-    public Page<Certification> findAll(Pageable pageable);
+    public Stream<CertificationDto> findByCertificationNameContains(String name);
+    public Stream<CertificationDto> findByCertificationProviderContains(String provider);
+    public Stream<CertificationDto> findByFreelancer(long freelancerId);
+    public Optional<Certification> findById(long id);
+    public CertificationDto findByIdDto(long id);
+    public Page<CertificationDto> findAll(Pageable pageable);
 
-    public Certification delete (int id);
+    public void delete (long id);
 
 }

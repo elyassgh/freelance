@@ -12,11 +12,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @Table(name = "Results")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TestResult implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -48,17 +54,7 @@ public class TestResult implements Serializable {
     private Double score;
 
     @Column(nullable = false)
-    private Boolean dispalyOnProfile;
+    private Boolean displayOnProfile;
 
-    public TestResult(Freelancer freelancer, Test test, LocalDateTime startTime, LocalDateTime endTime,
-            String testResultLink, Double score, Boolean dispalyOnProfile) {
-        this.freelancer = freelancer;
-        this.test = test;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.testResultLink = testResultLink;
-        this.score = score;
-        this.dispalyOnProfile = dispalyOnProfile;
-    }
 
 }

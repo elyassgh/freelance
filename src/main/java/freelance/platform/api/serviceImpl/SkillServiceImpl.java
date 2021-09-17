@@ -50,6 +50,12 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
+    public SkillDto findByIdDto(long id) {
+        Skill skill = repository.findById(id).orElseThrow(() -> new RuntimeException("not found !"));
+        return converter.toDto(skill);
+    }
+
+    @Override
     public Page<SkillDto> findAll(Pageable pageable) {
         return converter.toDtosPage(repository.findAll(pageable));
     }

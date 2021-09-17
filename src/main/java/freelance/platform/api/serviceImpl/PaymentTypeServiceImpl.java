@@ -50,6 +50,12 @@ public class PaymentTypeServiceImpl implements PaymentTypeService {
     }
 
     @Override
+    public PaymentTypeDto findByIdDto(long id) {
+        PaymentType paymentType = findById(id).orElseThrow(()-> new RuntimeException("not found !"));
+        return converter.toDto(paymentType);
+    }
+
+    @Override
     public Page<PaymentTypeDto> findAll(Pageable pageable) {
         return converter.toDtosPage(repository.findAll(pageable));
     }

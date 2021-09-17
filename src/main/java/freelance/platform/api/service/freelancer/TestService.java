@@ -1,6 +1,7 @@
 package freelance.platform.api.service.freelancer;
 
 import freelance.platform.api.bean.freelancer.Test;
+import freelance.platform.api.dto.freelancer.TestDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -9,14 +10,15 @@ import java.util.stream.Stream;
 
 public interface TestService {
 
-    public Test save(Test test);
-    public Test update(int id, Test test);
+    public TestDto save(TestDto dto);
+    public TestDto update(long id, TestDto dto);
 
-    public Test findByTestName(String testName);
-    public Stream<Test> findByTestNameContains(String testName);
-    public Optional<Test> findById(int id);
+    public TestDto findByTestName(String testName);
+    public Stream<TestDto> findByTestNameContains(String testName);
+    public Optional<Test> findById(long id);
+    public TestDto findByIdDto(long id);
     public Page<Test> findAll(Pageable pageable);
 
-    public Test delete(int id);
+    public void delete(long id);
 
 }

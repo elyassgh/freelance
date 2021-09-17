@@ -16,6 +16,7 @@ public interface SkillService {
     public SkillDto findBySkillName(String skillName);
     public Stream<SkillDto> findBySkillNameContains(String skillName);
     public Optional<Skill> findById(long id);
+    public SkillDto findByIdDto(long id);
     public Page<SkillDto> findAll(Pageable pageable);
 
     public void delete(long id);

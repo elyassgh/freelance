@@ -39,7 +39,6 @@ public class ManagerServiceImpl implements ManagerService {
     public ManagerDto update(long id, ManagerDto dto) {
         Manager manager = findById(id).orElseThrow(() -> new RuntimeException("not found !"));
         manager.setLocation(dto.getLocation());
-        manager.setCompany(dto.getCompany());
         return converter.toDto(repository.save(manager));
     }
 
@@ -66,6 +65,12 @@ public class ManagerServiceImpl implements ManagerService {
     @Override
     public Optional<Manager> findById(long id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public ManagerDto findByIdDto(long id) {
+        Manager manager = findById(id).orElseThrow(() -> new RuntimeException("not found !"));
+        return converter.toDto(manager);
     }
 
     @Override

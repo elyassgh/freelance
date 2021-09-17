@@ -14,6 +14,7 @@ public interface CompanyService {
 
     public CompanyDto findByName(String name);
     public Optional<Company> findById(long id);
+    public CompanyDto findByIdDto(long id);
     public Page<CompanyDto> findAll(Pageable pageable);
 
     public void delete(long id);
