@@ -22,5 +22,6 @@ public class TestResultDto {
     private LocalDateTime endTime;
     private String testResultLink;
     private Double score;
+    private Boolean displayOnProfile;
 
 }

@@ -1,6 +1,5 @@
 package freelance.platform.api.service.freelancer;
 
-import freelance.platform.api.bean.freelancer.Test;
 import freelance.platform.api.bean.freelancer.TestResult;
 import freelance.platform.api.dto.freelancer.TestResultDto;
 import org.springframework.data.domain.Page;
@@ -16,7 +15,7 @@ public interface TestResultService {
     public TestResultDto findByTest(long testId);
     public Optional<TestResult> findById(long id);
     public TestResultDto findByIdDto(long id);
-    public Page<Test> findAll(Pageable pageable);
+    public Page<TestResultDto> findAll(Pageable pageable);
 
     public void delete(long id);
 

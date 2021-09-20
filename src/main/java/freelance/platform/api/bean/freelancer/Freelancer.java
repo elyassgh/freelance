@@ -25,6 +25,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Table(name = "freelancers")
@@ -44,8 +45,9 @@ public class Freelancer implements Serializable {
     @OneToOne
     @JoinColumn(name = "account_id")
     private UserAccount account;
-    
-    @Column(nullable = false)
+
+    @Column(name = "registration_date", nullable = false, updatable = false)
+    @CreatedDate
     private LocalDate registrationDate;
 
     // County (Ex : Morocco)

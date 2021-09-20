@@ -1,12 +1,15 @@
 package freelance.platform.api.dto.freelancer;
 
-import freelance.platform.api.bean.UserAccount;
+import freelance.platform.api.bean.proposal.Contract;
+import freelance.platform.api.dto.SkillDto;
+import freelance.platform.api.dto.UserAccountDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Builder
@@ -15,9 +18,13 @@ import java.time.LocalDate;
 public class FreelancerDto {
 
     private Long id;
-    private UserAccount account;
+    private UserAccountDto account;
     private LocalDate registrationDate;
     private String location;
     private String bio;
+    private List<CertificationDto> certifications;
+    private List<SkillDto> skills;
+    // dont forget to change to dto
+    private List<Contract> contracts;
 
 }

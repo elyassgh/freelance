@@ -31,7 +31,11 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public ManagerDto save(ManagerDto dto) {
+        Company company = companyService.findById(dto.getCompany().getId()).orElseThrow(() -> new RuntimeException("not found !"));
+        UserAccount userAccount = userAccountService.findById(dto.getAccount().getId()).orElseThrow(() -> new RuntimeException("not found !"));
         Manager manager = converter.toEntity(dto);
+        manager.setCompany(company);
+        manager.setAccount(userAccount);
         return converter.toDto(repository.save(manager));
     }
 

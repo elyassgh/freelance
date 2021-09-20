@@ -1,7 +1,6 @@
 package freelance.platform.api.dto.client;
 
-import freelance.platform.api.bean.UserAccount;
-import freelance.platform.api.bean.client.Company;
+import freelance.platform.api.dto.UserAccountDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,9 +16,9 @@ import java.time.LocalDateTime;
 public class ManagerDto {
 
     private Long id;
-    private UserAccount account;
+    private UserAccountDto account;
     private String location;
-    private Company company;
+    private CompanyDto company;
     private LocalDateTime registeredAt;
 
 }

@@ -43,7 +43,7 @@ public class TestResult implements Serializable {
     @Column(name = "start_time", nullable = false)
     private LocalDateTime startTime;
 
-    @Column(name = "end_time", nullable = true)
+    @Column(name = "end_time")
     private LocalDateTime endTime;
 
     // URLs over 2,000 characters will not work in the most web browsers

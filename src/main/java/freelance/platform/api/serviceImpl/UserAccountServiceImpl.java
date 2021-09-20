@@ -56,12 +56,14 @@ public class UserAccountServiceImpl implements UserAccountService {
         return converter.toDto(userAccount);
     }
 
+    // for internal use ( other services )
     @Override
     public Optional<UserAccount> findById(long id) {
         log.info("findById userAccount service Impl");
         return repository.findById(id);
     }
 
+    // for external use ( api end points and so)
    @Override
     public UserAccountDto findByIdDto(long id) {
        log.info("findByIdDto userAccount service Impl");

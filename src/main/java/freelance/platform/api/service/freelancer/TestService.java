@@ -17,7 +17,7 @@ public interface TestService {
     public Stream<TestDto> findByTestNameContains(String testName);
     public Optional<Test> findById(long id);
     public TestDto findByIdDto(long id);
-    public Page<Test> findAll(Pageable pageable);
+    public Page<TestDto> findAll(Pageable pageable);
 
     public void delete(long id);
 

@@ -30,7 +30,6 @@ public class Skill implements Serializable {
     @Column(name = "skill_name", unique = true , nullable = false)
     private String skillName;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "skills")
     private List<Freelancer> freelancers;
 
