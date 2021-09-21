@@ -2,13 +2,10 @@ package freelance.platform.api.repository.job;
 
 import freelance.platform.api.bean.Skill;
 import freelance.platform.api.bean.client.Manager;
+import freelance.platform.api.bean.job.Job;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import freelance.platform.api.bean.job.Job;
-
-import java.util.Collection;
-import java.util.List;
 import java.util.stream.Stream;
 
 @Repository

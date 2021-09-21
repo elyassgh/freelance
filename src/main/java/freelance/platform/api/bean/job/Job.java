@@ -1,34 +1,29 @@
 package freelance.platform.api.bean.job;
 
-import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import freelance.platform.api.bean.PaymentType;
 import freelance.platform.api.bean.Skill;
 import freelance.platform.api.bean.client.Manager;
 import freelance.platform.api.bean.proposal.Proposal;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
-@Data
 @Table(name = "jobs")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Job implements Serializable {
 
     private static final long serialVersionUID = 1L;
- 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "job_id")
@@ -50,10 +45,10 @@ public class Job implements Serializable {
     private Duration duration;
 
     @ManyToOne
-    @JoinColumn(name = "payment_type_id" , nullable = false)
+    @JoinColumn(name = "payment_type_id", nullable = false)
     private PaymentType paymentType;
 
-    @Column(name = "payment_amount" , nullable = false)
+    @Column(name = "payment_amount")
     private Double paymentAmount;
 
     @OneToOne
@@ -61,12 +56,11 @@ public class Job implements Serializable {
     private Skill skill;
 
     @OneToMany
-    @JoinTable(name = "other_skills" ,
-        joinColumns = @JoinColumn(name = "job_id", referencedColumnName = "job_id"),
-        inverseJoinColumns = @JoinColumn(name = "skill_id" , referencedColumnName = "skill_id"))
+    @JoinTable(name = "other_skills",
+            joinColumns = @JoinColumn(name = "job_id", referencedColumnName = "job_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "skill_id"))
     private List<Skill> otherSkills;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "job")
     private List<Proposal> proposals;
 

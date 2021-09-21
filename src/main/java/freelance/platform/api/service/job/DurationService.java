@@ -1,19 +1,19 @@
 package freelance.platform.api.service.job;
 
 import freelance.platform.api.bean.job.Duration;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import freelance.platform.api.dto.job.DurationDto;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface DurationService {
 
-    public Duration save(Duration duration);
-    public Duration update(int id, Duration duration);
+    public DurationDto save(DurationDto dto);
+    public DurationDto update(long id, DurationDto dto);
 
-    public Optional<Duration> findById(int id);
-    public Page<Duration> findAll(Pageable pageable);
+    public Optional<Duration> findById(long id);
+    public List<DurationDto> findAll();
 
-    public Duration delete(int id);
+    public void delete(long id);
 
 }

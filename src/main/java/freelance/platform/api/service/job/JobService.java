@@ -1,28 +1,26 @@
 package freelance.platform.api.service.job;
 
-import freelance.platform.api.bean.Skill;
-import freelance.platform.api.bean.client.Manager;
 import freelance.platform.api.bean.job.Job;
+import freelance.platform.api.dto.job.JobDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 public interface JobService {
 
-    public Job save(Job job);
-    public Job update(int id, Job job);
+    public JobDto save(JobDto dto);
+    public JobDto update(long id, JobDto dto);
 
-    public Stream<Job> findByManager(Manager manager);
-    public Stream<Job> findBySkill(Skill skill);
-    public Stream<Job> findByPaymentAmountIsGreaterThanEqual(Double minValue);
-    public Stream<Job> findByDescriptionContains(String query);
-    public Stream<Job> findByOtherSkillsContaining(List<Skill> skills);
-    public Optional<Job> findById(int id);
-    public Page<Job> findAll(Pageable pageable);
+    public Stream<JobDto> findByManager(long mangerId);
+    public Stream<JobDto> findBySkill(long skillId);
+    public Stream<JobDto> findByPaymentAmountIsGreaterThanEqual(Double minValue);
+    public Stream<JobDto> findByDescriptionContains(String query);
+    public Optional<Job> findById(long id);
+    public JobDto findByIdDto(long id);
+    public Page<JobDto> findAll(Pageable pageable);
 
-    public Job delete(int id);
+    public void delete(long id);
 
 }
