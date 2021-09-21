@@ -12,6 +12,7 @@ public interface DurationService {
     public DurationDto update(long id, DurationDto dto);
 
     public Optional<Duration> findById(long id);
+    public DurationDto findByIdDto(long id);
     public List<DurationDto> findAll();
 
     public void delete(long id);

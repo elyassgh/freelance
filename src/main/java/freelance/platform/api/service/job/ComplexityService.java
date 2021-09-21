@@ -14,6 +14,7 @@ public interface ComplexityService {
     public ComplexityDto update(long id, ComplexityDto dto);
 
     public Optional<Complexity> findById(long id);
+    public ComplexityDto findByIdDto(long id);
     public List<ComplexityDto> findAll();
 
     public void delete(long id);

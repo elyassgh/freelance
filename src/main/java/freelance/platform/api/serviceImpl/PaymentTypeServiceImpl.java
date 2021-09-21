@@ -40,11 +40,6 @@ public class PaymentTypeServiceImpl implements PaymentTypeService {
     }
 
     @Override
-    public Stream<PaymentTypeDto> findByTypeNameContains(String typeName) {
-        return converter.toDtosStream(repository.findByTypeNameContains(typeName));
-    }
-
-    @Override
     public Optional<PaymentType> findById(long id) {
         return repository.findById(id);
     }

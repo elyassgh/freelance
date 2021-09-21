@@ -24,12 +24,12 @@ public class UserAccountRest {
         return service.update(id, dto);
     }
 
-    @GetMapping("/find/username/")
+    @GetMapping("/find/username")
     public UserAccountDto findByUserName(@RequestParam(name = "username") String userName) {
         return service.findByUserName(userName);
     }
 
-    @GetMapping("/find/email/")
+    @GetMapping("/find/email")
     public UserAccountDto findByEmail(@RequestParam(name = "email") String email) {
         return service.findByEmail(email);
     }

@@ -37,6 +37,12 @@ public class DurationServiceImpl implements DurationService {
     }
 
     @Override
+    public DurationDto findByIdDto(long id) {
+        Duration duration = repository.findById(id).orElseThrow(() -> new RuntimeException("not found"));
+        return converter.toDto(duration);
+    }
+
+    @Override
     public List<DurationDto> findAll() {
         return converter.toDtos(repository.findAll());
     }

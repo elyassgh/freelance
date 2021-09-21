@@ -13,6 +13,5 @@ import java.util.stream.Stream;
 public interface PaymentTypeRepository extends JpaRepository<PaymentType, Long> {
 
     PaymentType findByTypeName(String typeName);
-    Stream<PaymentType> findByTypeNameContains(String typeName);
 
 }

@@ -38,6 +38,12 @@ public class ComplexityServiceImpl implements ComplexityService {
     }
 
     @Override
+    public ComplexityDto findByIdDto(long id) {
+        Complexity complexity = repository.findById(id).orElseThrow(() -> new RuntimeException("not found"));
+        return converter.toDto(complexity);
+    }
+
+    @Override
     public List<ComplexityDto> findAll() {
         return converter.toDtos(repository.findAll());
     }
