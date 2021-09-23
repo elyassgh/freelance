@@ -14,39 +14,39 @@ import java.util.stream.Stream;
 public class SkillRest {
 
     @Autowired
-    SkillService skillService;
+    SkillService service;
 
     @PostMapping("/save")
     public SkillDto save(@RequestBody SkillDto dto) {
-        return skillService.save(dto);
+        return service.save(dto);
     }
     @PutMapping("/update/id/{id}")
     public SkillDto update(@PathVariable long id, @RequestBody SkillDto dto) {
-        return skillService.update(id, dto);
+        return service.update(id, dto);
     }
 
     @GetMapping("/find/skill-name")
     public SkillDto findBySkillName(@RequestParam(name = "skillName") String skillName) {
-        return skillService.findBySkillName(skillName);
+        return service.findBySkillName(skillName);
     }
 
     @GetMapping("/find/all/skill-name")
     public Stream<SkillDto> findBySkillNameContains(@RequestParam(name = "skillName") String skillName) {
-        return skillService.findBySkillNameContains(skillName);
+        return service.findBySkillNameContains(skillName);
     }
 
     @GetMapping("/find/id/{id}")
     public SkillDto findByIdDto(@PathVariable long id) {
-        return skillService.findByIdDto(id);
+        return service.findByIdDto(id);
     }
 
     @GetMapping("/find/all/p/{p}/s/{s}")
     public Page<SkillDto> findAll(@PathVariable(name = "p") int page, @PathVariable(name = "s") int size) {
-        return skillService.findAll(PageRequest.of(page, size));
+        return service.findAll(PageRequest.of(page, size));
     }
 
     @DeleteMapping("/delete/id/{id}")
     public void delete(@PathVariable long id) {
-        skillService.delete(id);
+        service.delete(id);
     }
 }

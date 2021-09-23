@@ -12,30 +12,30 @@ import java.util.List;
 public class DurationRest {
 
     @Autowired
-    DurationService durationService;
+    DurationService service;
 
     @PostMapping("/save")
     public DurationDto save(@RequestBody DurationDto dto) {
-        return durationService.save(dto);
+        return service.save(dto);
     }
 
     @PutMapping("/update/id/{id}")
     public DurationDto update(@PathVariable long id, @RequestBody DurationDto dto) {
-        return durationService.update(id, dto);
+        return service.update(id, dto);
     }
 
     @GetMapping("/find/id/{id}")
     public DurationDto findByIdDto(@PathVariable long id) {
-        return durationService.findByIdDto(id);
+        return service.findByIdDto(id);
     }
 
     @GetMapping("/find/all")
     public List<DurationDto> findAll() {
-        return durationService.findAll();
+        return service.findAll();
     }
 
     @DeleteMapping("/delete/id/{id}")
     public void delete(@PathVariable long id) {
-        durationService.delete(id);
+        service.delete(id);
     }
 }

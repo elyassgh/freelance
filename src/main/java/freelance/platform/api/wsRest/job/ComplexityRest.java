@@ -12,29 +12,29 @@ import java.util.List;
 public class ComplexityRest {
 
     @Autowired
-    ComplexityService complexityService;
+    ComplexityService service;
 
     @PostMapping("/save")
     public ComplexityDto save(@RequestBody ComplexityDto dto) {
-        return complexityService.save(dto);
+        return service.save(dto);
     }
 
     @PutMapping("/update/id/{id}")
     public ComplexityDto update(@PathVariable long id, @RequestBody ComplexityDto dto) {
-        return complexityService.update(id, dto);
+        return service.update(id, dto);
     }
     @GetMapping("/find/id/{id}")
     public ComplexityDto findByIdDto(@PathVariable long id) {
-        return complexityService.findByIdDto(id);
+        return service.findByIdDto(id);
     }
 
     @GetMapping("/find/all")
     public List<ComplexityDto> findAll() {
-        return complexityService.findAll();
+        return service.findAll();
     }
 
     @DeleteMapping("/delete/id/{id}")
     public void delete(@PathVariable long id) {
-        complexityService.delete(id);
+        service.delete(id);
     }
 }
