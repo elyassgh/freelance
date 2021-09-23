@@ -12,8 +12,8 @@ import java.util.stream.Stream;
 
 public interface MessageService {
 
-    public MessageDto save(MessageDto message);
-    public MessageDto update(long id, MessageDto message);
+    public MessageDto save(MessageDto dto);
+    public MessageDto update(long id, MessageDto dto);
 
     public Stream<MessageDto> findByManagerAndFreelance(long managerId, long freelancerId);
     public Optional<Message> findById(long id);

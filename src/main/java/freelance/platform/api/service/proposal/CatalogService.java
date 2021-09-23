@@ -8,12 +8,12 @@ import java.util.Optional;
 
 public interface CatalogService {
 
-    public CatalogDto save(CatalogDto catalog);
-    public CatalogDto update(long id, CatalogDto catalog);
+    public CatalogDto save(CatalogDto dto);
+    public CatalogDto update(long id, CatalogDto dto);
 
     public Optional<Catalog> findById(long id);
     public CatalogDto findByIdDto(long id);
-    public List<Catalog> findAll();
+    public List<CatalogDto> findAll();
 
     public void delete(long id);
 

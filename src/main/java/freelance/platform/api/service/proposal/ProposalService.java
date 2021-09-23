@@ -14,8 +14,8 @@ public interface ProposalService {
     public ProposalDto save(ProposalDto dto);
     public ProposalDto update(long id, ProposalDto dto);
 
-    public Stream<Proposal> findByJob(Job job);
-    public Stream<Proposal> findByPaymentAmountBetween(Double minValue, Double maxValue);
+    public Stream<ProposalDto> findByJob(long jobId);
+    public Stream<ProposalDto> findByPaymentAmountBetween(Double minValue, Double maxValue);
     public Optional<Proposal> findById(long id);
     public ProposalDto findByIdDto(long id);
     public Page<ProposalDto> findAll(Pageable pageable);

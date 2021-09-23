@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 @Repository
 public interface ContractRepository extends JpaRepository<Contract, Long> {
 
-    Optional<Contract> findByProposal(Proposal proposal);
+    Contract findByProposal(Proposal proposal);
     Stream<Contract> findByCompany(Company company);
     Stream<Contract> findByFreelancer(Freelancer freelancer);
 }
