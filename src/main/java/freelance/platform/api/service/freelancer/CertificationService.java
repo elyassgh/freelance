@@ -1,7 +1,6 @@
 package freelance.platform.api.service.freelancer;
 
 import freelance.platform.api.bean.freelancer.Certification;
-import freelance.platform.api.bean.freelancer.Freelancer;
 import freelance.platform.api.dto.freelancer.CertificationDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -7,7 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/freelance-api/v1/certification")
@@ -27,18 +28,18 @@ public class CertificationRest {
     }
 
     @GetMapping("/find/all/name/{name}")
-    public Stream<CertificationDto> findByCertificationNameContains(@PathVariable String name) {
-        return service.findByCertificationNameContains(name);
+    public List<CertificationDto> findByCertificationNameContains(@PathVariable String name) {
+        return service.findByCertificationNameContains(name).collect(Collectors.toList());
     }
 
     @GetMapping("/find/all/provider/{provider}")
-    public Stream<CertificationDto> findByCertificationProviderContains(@PathVariable String provider) {
-        return service.findByCertificationProviderContains(provider);
+    public List<CertificationDto> findByCertificationProviderContains(@PathVariable String provider) {
+        return service.findByCertificationProviderContains(provider).collect(Collectors.toList());
     }
 
     @GetMapping("/find/all/freelancer/{freelancerId}")
-    public Stream<CertificationDto> findByFreelancer(@PathVariable long freelancerId) {
-        return service.findByFreelancer(freelancerId);
+    public List<CertificationDto> findByFreelancer(@PathVariable long freelancerId) {
+        return service.findByFreelancer(freelancerId).collect(Collectors.toList());
     }
 
     @GetMapping("/find/id/{id}")

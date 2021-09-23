@@ -5,10 +5,10 @@ import freelance.platform.api.service.proposal.ProposalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/freelance-api/v1/proposal")
@@ -28,14 +28,14 @@ public class ProposalRest {
     }
 
     @GetMapping("/find/all/job/{jobId}")
-    public Stream<ProposalDto> findByJob(@PathVariable long jobId) {
-        return service.findByJob(jobId);
+    public List<ProposalDto> findByJob(@PathVariable long jobId) {
+        return service.findByJob(jobId).collect(Collectors.toList());
     }
 
     @GetMapping("/find/all/payment-amount")
-    public Stream<ProposalDto> findByPaymentAmountBetween(@RequestParam(name = "min") Double minValue,
+    public List<ProposalDto> findByPaymentAmountBetween(@RequestParam(name = "min") Double minValue,
                                                           @RequestParam(name = "min") Double maxValue) {
-        return service.findByPaymentAmountBetween(minValue, maxValue);
+        return service.findByPaymentAmountBetween(minValue, maxValue).collect(Collectors.toList());
     }
 
     @GetMapping("/find/id/{id}")

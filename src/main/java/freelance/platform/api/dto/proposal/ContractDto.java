@@ -1,6 +1,5 @@
 package freelance.platform.api.dto.proposal;
 
-import freelance.platform.api.bean.proposal.Proposal;
 import freelance.platform.api.dto.PaymentTypeDto;
 import freelance.platform.api.dto.client.CompanyDto;
 import freelance.platform.api.dto.freelancer.FreelancerDto;

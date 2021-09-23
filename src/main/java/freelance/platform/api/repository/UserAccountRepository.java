@@ -1,9 +1,8 @@
 package freelance.platform.api.repository;
 
+import freelance.platform.api.bean.UserAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import freelance.platform.api.bean.UserAccount;
 
 import java.util.Optional;
 

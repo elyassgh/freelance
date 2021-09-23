@@ -13,7 +13,7 @@ public interface JobService {
     public JobDto save(JobDto dto);
     public JobDto update(long id, JobDto dto);
 
-    public Stream<JobDto> findByManager(long mangerId);
+    public Stream<JobDto> findByManager(long managerId);
     public Stream<JobDto> findBySkill(long skillId);
     public Stream<JobDto> findByPaymentAmountIsGreaterThanEqual(Double minValue);
     public Stream<JobDto> findByDescriptionContains(String query);

@@ -7,7 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/freelance-api/v1/skill")
@@ -31,8 +32,8 @@ public class SkillRest {
     }
 
     @GetMapping("/find/all/skill-name")
-    public Stream<SkillDto> findBySkillNameContains(@RequestParam(name = "skillName") String skillName) {
-        return service.findBySkillNameContains(skillName);
+    public List<SkillDto> findBySkillNameContains(@RequestParam(name = "skillName") String skillName) {
+        return service.findBySkillNameContains(skillName).collect(Collectors.toList());
     }
 
     @GetMapping("/find/id/{id}")

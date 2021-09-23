@@ -82,8 +82,8 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Stream<JobDto> findByManager(long mangerId) {
-        Manager manager = managerService.findById(mangerId).orElseThrow(() -> new RuntimeException("not found"));
+    public Stream<JobDto> findByManager(long managerId) {
+        Manager manager = managerService.findById(managerId).orElseThrow(() -> new RuntimeException("not found"));
         return converter.toDtosStream(repository.findByManager(manager));
     }
 

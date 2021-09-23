@@ -1,14 +1,10 @@
 package freelance.platform.api.repository;
 
-import java.util.List;
-import java.util.stream.Stream;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import freelance.platform.api.bean.Skill;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import freelance.platform.api.bean.Skill;
+import java.util.stream.Stream;
 
 @Repository
 public interface SkillRepository extends JpaRepository<Skill, Long> {

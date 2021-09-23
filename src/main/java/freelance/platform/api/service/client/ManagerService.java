@@ -1,6 +1,5 @@
 package freelance.platform.api.service.client;
 
-import freelance.platform.api.bean.UserAccount;
 import freelance.platform.api.bean.client.Manager;
 import freelance.platform.api.dto.client.ManagerDto;
 import org.springframework.data.domain.Page;

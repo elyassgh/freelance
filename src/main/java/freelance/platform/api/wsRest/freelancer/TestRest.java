@@ -7,7 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/freelance-api/v1/test")
@@ -32,8 +33,8 @@ public class TestRest {
     }
 
     @GetMapping("/find/all/name/{testName}")
-    public Stream<TestDto> findByTestNameContains(@PathVariable String testName) {
-        return service.findByTestNameContains(testName);
+    public List<TestDto> findByTestNameContains(@PathVariable String testName) {
+        return service.findByTestNameContains(testName).collect(Collectors.toList());
     }
 
     @GetMapping("/find/id/{id}")

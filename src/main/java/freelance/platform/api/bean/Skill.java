@@ -1,6 +1,5 @@
 package freelance.platform.api.bean;
 
-import freelance.platform.api.bean.freelancer.Freelancer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "skills_dict")
@@ -27,8 +25,5 @@ public class Skill implements Serializable {
 
     @Column(name = "skill_name", unique = true , nullable = false)
     private String skillName;
-
-    @ManyToMany(mappedBy = "skills")
-    private List<Freelancer> freelancers;
 
 }

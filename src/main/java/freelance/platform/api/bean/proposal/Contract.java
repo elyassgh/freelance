@@ -1,10 +1,5 @@
 package freelance.platform.api.bean.proposal;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-
-import javax.persistence.*;
-
 import freelance.platform.api.bean.PaymentType;
 import freelance.platform.api.bean.client.Company;
 import freelance.platform.api.bean.freelancer.Freelancer;
@@ -14,6 +9,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "contracts")

@@ -1,8 +1,5 @@
 package freelance.platform.api.service.freelancer;
 
-import freelance.platform.api.bean.Skill;
-import freelance.platform.api.bean.UserAccount;
-import freelance.platform.api.bean.freelancer.Certification;
 import freelance.platform.api.bean.freelancer.Freelancer;
 import freelance.platform.api.dto.freelancer.FreelancerDto;
 import org.springframework.data.domain.Page;

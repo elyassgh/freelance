@@ -1,6 +1,5 @@
 package freelance.platform.api.bean.job;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import freelance.platform.api.bean.PaymentType;
 import freelance.platform.api.bean.Skill;
 import freelance.platform.api.bean.client.Manager;

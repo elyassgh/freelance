@@ -1,6 +1,5 @@
 package freelance.platform.api.service.proposal;
 
-import freelance.platform.api.bean.job.Job;
 import freelance.platform.api.bean.proposal.Proposal;
 import freelance.platform.api.dto.proposal.ProposalDto;
 import org.springframework.data.domain.Page;

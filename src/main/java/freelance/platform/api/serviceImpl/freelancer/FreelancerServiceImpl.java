@@ -3,7 +3,6 @@ package freelance.platform.api.serviceImpl.freelancer;
 import freelance.platform.api.bean.UserAccount;
 import freelance.platform.api.bean.freelancer.Freelancer;
 import freelance.platform.api.converter.freelancer.FreelancerConverter;
-import freelance.platform.api.dto.SkillDto;
 import freelance.platform.api.dto.freelancer.FreelancerDto;
 import freelance.platform.api.repository.freelancer.FreelancerRepository;
 import freelance.platform.api.service.SkillService;
@@ -14,7 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 

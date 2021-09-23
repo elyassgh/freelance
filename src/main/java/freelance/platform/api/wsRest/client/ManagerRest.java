@@ -7,7 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/freelance-api/v1/manager")
@@ -27,13 +28,13 @@ public class ManagerRest {
     }
 
     @GetMapping("/find/company/{companyId}")
-    public Stream<ManagerDto> findByCompany(@PathVariable Long companyId) {
-        return service.findByCompany(companyId);
+    public List<ManagerDto> findByCompany(@PathVariable Long companyId) {
+        return service.findByCompany(companyId).collect(Collectors.toList());
     }
 
     @GetMapping("/find/location/{location}")
-    public Stream<ManagerDto> findByLocation(@PathVariable String location) {
-        return service.findByLocation(location);
+    public List<ManagerDto> findByLocation(@PathVariable String location) {
+        return service.findByLocation(location).collect(Collectors.toList());
     }
 
     @GetMapping("/find/account/{userAccountId}")
