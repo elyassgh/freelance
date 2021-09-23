@@ -3,6 +3,7 @@ package freelance.platform.api.dto.freelancer;
 import freelance.platform.api.bean.proposal.Contract;
 import freelance.platform.api.dto.SkillDto;
 import freelance.platform.api.dto.UserAccountDto;
+import freelance.platform.api.dto.proposal.ContractDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,7 +25,6 @@ public class FreelancerDto {
     private String bio;
     private List<CertificationDto> certifications;
     private List<SkillDto> skills;
-    // dont forget to change to dto
-    private List<Contract> contracts;
+    private List<ContractDto> contracts;
 
 }

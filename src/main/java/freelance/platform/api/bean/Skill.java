@@ -1,6 +1,5 @@
 package freelance.platform.api.bean;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import freelance.platform.api.bean.freelancer.Freelancer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity

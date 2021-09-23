@@ -52,6 +52,8 @@ public class JobConverter {
                 .complexity(complexityConverter.toDto(job.getComplexity()))
                 .duration(durationConverter.toDto(job.getDuration()))
                 .manager(managerConverter.toDto(job.getManager()))
+                // dont forget proposals
+                // .proposals(proposalConverter.toDto(job.getProposals()))
                 .skill(skillConverter.toDto(job.getSkill()))
                 .otherSkills(skillConverter.toDtos(job.getOtherSkills()))
                 .build();

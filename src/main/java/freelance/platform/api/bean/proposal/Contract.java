@@ -3,24 +3,25 @@ package freelance.platform.api.bean.proposal;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import freelance.platform.api.bean.PaymentType;
 import freelance.platform.api.bean.client.Company;
 import freelance.platform.api.bean.freelancer.Freelancer;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Data
 @Table(name = "contracts")
+@EntityListeners(AuditingEntityListener.class)
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Contract implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,10 +50,11 @@ public class Contract implements Serializable {
     @Column(name = "payment_amount" , nullable = false)
     private Double paymentAmount;
     
-    @Column(name = "start_time", nullable = false)
-    private LocalDateTime startTime;
+    @Column(name = "issued_at", nullable = false, updatable = false)
+    @CreatedDate
+    private LocalDateTime issuedAt;
 
-    @Column(name = "end_time", nullable = true)
-    private LocalDateTime endTime;
+    @Column(name = "finished_at")
+    private LocalDateTime finishedAt;
 
 }

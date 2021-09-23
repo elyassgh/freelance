@@ -1,14 +1,9 @@
 package freelance.platform.api.dto.job;
 
-import freelance.platform.api.bean.PaymentType;
-import freelance.platform.api.bean.Skill;
-import freelance.platform.api.bean.client.Manager;
-import freelance.platform.api.bean.job.Complexity;
-import freelance.platform.api.bean.job.Duration;
-import freelance.platform.api.bean.proposal.Proposal;
 import freelance.platform.api.dto.PaymentTypeDto;
 import freelance.platform.api.dto.SkillDto;
 import freelance.platform.api.dto.client.ManagerDto;
+import freelance.platform.api.dto.proposal.ProposalDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,7 +26,6 @@ public class JobDto {
     private Double paymentAmount;
     private SkillDto skill;
     private List<SkillDto> otherSkills;
-    // dont forget to change it dto
-    private List<Proposal> proposals;
+    private List<ProposalDto> proposals;
 
 }

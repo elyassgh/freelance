@@ -4,6 +4,7 @@ import freelance.platform.api.bean.client.Company;
 import freelance.platform.api.bean.freelancer.Freelancer;
 import freelance.platform.api.bean.proposal.Contract;
 import freelance.platform.api.bean.proposal.Proposal;
+import freelance.platform.api.dto.proposal.ContractDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,15 +13,16 @@ import java.util.stream.Stream;
 
 public interface ContractService {
 
-    public Contract save(Contract contract);
-    public Contract update(int id, Contract contract);
+    public ContractDto save(ContractDto contract);
+    public ContractDto update(long id, ContractDto contract);
 
-    public Optional<Contract> findByProposal(Proposal proposal);
-    public Stream<Contract> findByCompany(Company company);
-    public Stream<Contract> findByFreelancer(Freelancer freelancer);
-    public Optional<Contract> findById(int id);
-    public Page<Contract> findAll(Pageable pageable);
+    public ContractDto findByProposal(long proposalId);
+    public Stream<Contract> findByCompany(long companyId);
+    public Stream<Contract> findByFreelancer(long freelancerId);
+    public Optional<Contract> findById(long id);
+    public ContractDto findByIdDto(long id);
+    public Page<ContractDto> findAll(Pageable pageable);
 
-    public Contract delete(int id);
+    public void delete(long id);
 
 }

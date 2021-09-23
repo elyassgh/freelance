@@ -18,8 +18,6 @@ public class UserAccountConverter {
                 .lastName(dto.getLastName())
                 .email(dto.getEmail())
                 .password(dto.getPassword())
-                .createdDate(dto.getCreatedDate())
-                .modifiedDate(dto.getModifiedDate())
                 .build();
     }
 

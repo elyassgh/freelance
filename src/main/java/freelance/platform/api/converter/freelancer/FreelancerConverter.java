@@ -22,7 +22,6 @@ public class FreelancerConverter {
     @Autowired
     CertificationConverter certificationConverter;
 
-
     public Freelancer toEntity(FreelancerDto dto) {
         return Freelancer.builder().id(dto.getId())
                 .bio(dto.getBio())
@@ -42,7 +41,7 @@ public class FreelancerConverter {
                 .location(freelancer.getLocation())
                 .bio(freelancer.getBio())
                 .registrationDate(freelancer.getRegistrationDate())
-                .contracts(freelancer.getContracts())
+                //.contracts(contractConverter.toDtos(freelancer.getContracts()))
                 .skills(skillConverter.toDtos(freelancer.getSkills()))
                 .certifications(certificationConverter.toDtos(freelancer.getCertifications()))
                 .build();

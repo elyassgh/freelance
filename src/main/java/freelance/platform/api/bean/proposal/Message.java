@@ -1,27 +1,26 @@
 package freelance.platform.api.bean.proposal;
 
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import freelance.platform.api.bean.client.Manager;
 import freelance.platform.api.bean.freelancer.Freelancer;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
-@Data
 @Table(name = "messages")
+@EntityListeners(AuditingEntityListener.class)
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Message implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,18 +30,16 @@ public class Message implements Serializable {
     @Column(name = "message_id")
     private Long id;
 
-    @Column(name = "message_time", nullable = false)
+    @Column(name = "message_time", nullable = false, updatable = false)
+    @CreatedDate
     private LocalDateTime messageTime;
 
     @Column(name = "message_text", nullable = false)
     private String messageText;
 
-    @OneToMany(mappedBy = "message")
-    private List<Attachment> attachments;
-
     @ManyToOne
     @JoinColumn(name = "freelancer_id")
-    private Freelancer freelance;
+    private Freelancer freelancer;
 
     @ManyToOne
     @JoinColumn(name = "hire_manager_id")
