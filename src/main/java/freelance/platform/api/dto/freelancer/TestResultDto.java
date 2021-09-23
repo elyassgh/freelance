@@ -1,6 +1,5 @@
 package freelance.platform.api.dto.freelancer;
 
-import freelance.platform.api.bean.freelancer.Freelancer;
 import freelance.platform.api.bean.freelancer.Test;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +15,7 @@ import java.time.LocalDateTime;
 public class TestResultDto {
 
     private Long id;
-    private Freelancer freelancer;
+    private FreelancerDto freelancer;
     private Test test;
     private LocalDateTime startTime;
     private LocalDateTime endTime;

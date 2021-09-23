@@ -11,6 +11,6 @@ import java.util.stream.Stream;
 
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
-    Stream<Message> findByManagerAndFreelance(Manager manager, Freelancer freelancer);
+    Stream<Message> findByManagerAndFreelancer(Manager manager, Freelancer freelancer);
 
 }

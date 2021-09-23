@@ -15,7 +15,7 @@ public interface MessageService {
     public MessageDto save(MessageDto dto);
     public MessageDto update(long id, MessageDto dto);
 
-    public Stream<MessageDto> findByManagerAndFreelance(long managerId, long freelancerId);
+    public Stream<MessageDto> findByManagerAndFreelancer(long managerId, long freelancerId);
     public Optional<Message> findById(long id);
     public MessageDto findByIdDto(long id);
     public Page<MessageDto> findAll(Pageable pageable);

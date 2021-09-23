@@ -36,7 +36,7 @@ public class ManagerRest {
         return service.findByLocation(location);
     }
 
-    @GetMapping("/find/location/{userAccountId}")
+    @GetMapping("/find/account/{userAccountId}")
     public ManagerDto findByAccount(@PathVariable Long userAccountId) {
         return service.findByAccount(userAccountId);
     }

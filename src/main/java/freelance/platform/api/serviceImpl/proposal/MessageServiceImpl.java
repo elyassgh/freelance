@@ -47,10 +47,10 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public Stream<MessageDto> findByManagerAndFreelance(long managerId, long freelancerId) {
+    public Stream<MessageDto> findByManagerAndFreelancer(long managerId, long freelancerId) {
         Manager manager = managerService.findById(managerId).orElseThrow(() -> new RuntimeException("not found"));
         Freelancer freelancer = freelancerService.findById(freelancerId).orElseThrow(() -> new RuntimeException("not found"));
-        return converter.toDtosStream(repository.findByManagerAndFreelance(manager, freelancer));
+        return converter.toDtosStream(repository.findByManagerAndFreelancer(manager, freelancer));
     }
 
     @Override

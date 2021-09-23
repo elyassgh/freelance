@@ -2,6 +2,7 @@ package freelance.platform.api.converter.freelancer;
 
 import freelance.platform.api.bean.freelancer.TestResult;
 import freelance.platform.api.dto.freelancer.TestResultDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
@@ -12,9 +13,12 @@ import java.util.stream.Stream;
 @Component
 public class TestResultConverter {
 
+    @Autowired
+    FreelancerConverter freelancerConverter;
+
     public TestResult toEntity(TestResultDto dto) {
         return TestResult.builder().id(dto.getId())
-                .freelancer(dto.getFreelancer())
+                .freelancer(freelancerConverter.toEntity(dto.getFreelancer()))
                 .test(dto.getTest())
                 .testResultLink(dto.getTestResultLink())
                 .score(dto.getScore())
@@ -36,7 +40,7 @@ public class TestResultConverter {
                 .endTime(testResult.getEndTime())
                 .testResultLink(testResult.getTestResultLink())
                 .test(testResult.getTest())
-                .freelancer(testResult.getFreelancer())
+                .freelancer(freelancerConverter.toDto(testResult.getFreelancer()))
                 .build();
     }
 
