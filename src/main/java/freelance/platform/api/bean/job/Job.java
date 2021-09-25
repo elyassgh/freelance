@@ -54,13 +54,14 @@ public class Job implements Serializable {
     @JoinColumn(name = "main_skill")
     private Skill skill;
 
-    @OneToMany
+    @ManyToMany
     @JoinTable(name = "other_skills",
             joinColumns = @JoinColumn(name = "job_id", referencedColumnName = "job_id"),
             inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "skill_id"))
     private List<Skill> otherSkills;
 
-    @OneToMany(mappedBy = "job")
+
+    @OneToMany(mappedBy = "job", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Proposal> proposals;
 
 }

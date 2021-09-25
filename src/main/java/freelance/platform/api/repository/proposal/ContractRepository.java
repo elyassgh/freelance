@@ -15,4 +15,5 @@ public interface ContractRepository extends JpaRepository<Contract, Long> {
     Contract findByProposal(Proposal proposal);
     Stream<Contract> findByCompany(Company company);
     Stream<Contract> findByFreelancer(Freelancer freelancer);
+
 }

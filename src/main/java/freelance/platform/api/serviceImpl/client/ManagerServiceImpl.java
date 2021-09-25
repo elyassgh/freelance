@@ -31,24 +31,24 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public ManagerDto save(ManagerDto dto) {
-        Company company = companyService.findById(dto.getCompany().getId()).orElseThrow(() -> new RuntimeException("not found !"));
-        UserAccount userAccount = userAccountService.findById(dto.getAccount().getId()).orElseThrow(() -> new RuntimeException("not found !"));
+        Company company = companyService.findById(dto.getCompany().getId()).orElseThrow(() -> new RuntimeException("not found"));
         Manager manager = converter.toEntity(dto);
         manager.setCompany(company);
-        manager.setAccount(userAccount);
+        UserAccount account = userAccountService.save(dto.getAccount());
+        manager.setAccount(account);
         return converter.toDto(repository.save(manager));
     }
 
     @Override
     public ManagerDto update(long id, ManagerDto dto) {
-        Manager manager = findById(id).orElseThrow(() -> new RuntimeException("not found !"));
+        Manager manager = repository.findById(id).orElseThrow(() -> new RuntimeException("not found"));
         manager.setLocation(dto.getLocation());
         return converter.toDto(repository.save(manager));
     }
 
     @Override
     public Stream<ManagerDto> findByCompany(Long companyId) {
-        Company company = companyService.findById(companyId).orElseThrow(() -> new RuntimeException("not found !"));
+        Company company = companyService.findById(companyId).orElseThrow(() -> new RuntimeException("not found"));
         Stream<Manager> managers = repository.findByCompany(company);
         return converter.toDtosStream(managers);
     }
@@ -61,7 +61,7 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public ManagerDto findByAccount(Long userAccountId) {
-        UserAccount userAccount = userAccountService.findById(userAccountId).orElseThrow(() -> new RuntimeException("not found !"));
+        UserAccount userAccount = userAccountService.findById(userAccountId).orElseThrow(() -> new RuntimeException("not found"));
         Manager manager = repository.findByAccount(userAccount);
         return converter.toDto(manager);
     }
@@ -73,7 +73,7 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public ManagerDto findByIdDto(long id) {
-        Manager manager = findById(id).orElseThrow(() -> new RuntimeException("not found !"));
+        Manager manager = repository.findById(id).orElseThrow(() -> new RuntimeException("not found"));
         return converter.toDto(manager);
     }
 
@@ -84,7 +84,8 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public void delete(long id) {
-        Manager manager = findById(id).orElseThrow(() -> new RuntimeException("not found !"));
-        repository.delete(manager);
+        Manager manager = repository.findById(id).orElseThrow(() -> new RuntimeException("not found"));
+        userAccountService.delete(manager.getId());
+        //repository.delete(manager);
     }
 }

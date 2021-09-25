@@ -5,6 +5,7 @@ import freelance.platform.api.service.job.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,28 +29,26 @@ public class JobRest {
     }
 
     @GetMapping("/find/manager/{managerId}")
+    @Transactional(readOnly = true)
     public List<JobDto> findByManager(@PathVariable long managerId) {
         return service.findByManager(managerId).collect(Collectors.toList());
     }
 
-    @GetMapping("/find/skill/{skillId}")
-    public List<JobDto> findBySkill(@PathVariable long skillId) {
-        return service.findBySkill(skillId).collect(Collectors.toList());
-    }
-
-    @GetMapping("/find/all/min-amount")
-    public List<JobDto> findByPaymentAmountIsGreaterThanEqual(@RequestParam(name = "minVal") Double minValue) {
-        return service.findByPaymentAmountIsGreaterThanEqual(minValue).collect(Collectors.toList());
-    }
-
-    @GetMapping("/find/all/description")
-    public List<JobDto> findByDescriptionContains(@RequestParam(name = "query") String query) {
-        return service.findByDescriptionContains(query).collect(Collectors.toList());
+    @GetMapping("/find/all/min-amount/p/{p}/s/{s}")
+    public Page<JobDto> findByPaymentAmountIsGreaterThanEqual(@RequestParam(name = "minVal") Double minValue,
+                                                              @PathVariable(name = "p") int page,
+                                                              @PathVariable(name = "s") int size) {
+        return service.findByPaymentAmountIsGreaterThanEqual(minValue, PageRequest.of(page, size));
     }
 
     @GetMapping("/find/id/{id}")
     public JobDto findByIdDto(@PathVariable long id) {
         return service.findByIdDto(id);
+    }
+
+    @GetMapping("/find/all/skill/{skillId}/p/{p}/s/{s}")
+    public Page<JobDto> findBySkill(@PathVariable long skillId, @PathVariable(name = "p") int page, @PathVariable(name = "s") int size) {
+        return service.findBySkill(skillId, PageRequest.of(page, size));
     }
 
     @GetMapping("/find/all/p/{p}/s/{s}")

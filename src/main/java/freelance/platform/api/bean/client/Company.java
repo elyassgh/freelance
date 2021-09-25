@@ -18,20 +18,20 @@ import java.util.List;
 @AllArgsConstructor
 public class Company implements Serializable {
 
-   private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(name = "company_id")
-   private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "company_id")
+    private Long id;
 
-   @Column(name = "company_name")
-   private String name;
+    @Column(name = "company_name", nullable = false, unique = true)
+    private String name;
 
-   @OneToMany(mappedBy = "company")
-   private List<Manager> managers;
+    @OneToMany(mappedBy = "company")
+    private List<Manager> managers;
 
-   @OneToMany(mappedBy = "company")
-   private List<Contract> contracts;
+    @OneToMany(mappedBy = "company")
+    private List<Contract> contracts;
 
 }

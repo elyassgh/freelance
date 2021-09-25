@@ -1,7 +1,6 @@
 package freelance.platform.api.dto.proposal;
 
 import freelance.platform.api.dto.PaymentTypeDto;
-import freelance.platform.api.dto.job.JobDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +20,6 @@ public class ProposalDto {
     private String clientComment;
     private String freelancerGrade;
     private String freelancerComment;
-    private JobDto job;
     private PaymentTypeDto paymentType;
     private Double paymentAmount;
 

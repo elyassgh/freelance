@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface UserAccountService {
 
-    public UserAccountDto save(UserAccountDto dto);
+    public UserAccount save(UserAccountDto dto);
     public UserAccountDto update(long id, UserAccountDto dto);
 
     public UserAccountDto findByUserName(String userName);

@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 
 @Repository
 public interface FreelancerRepository extends JpaRepository<Freelancer, Long> {
+
     Freelancer findByAccount(UserAccount account);
     Stream<Freelancer> findByLocation(String location);
     Stream<Freelancer> findByBioContains(String keyword);

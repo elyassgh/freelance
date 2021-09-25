@@ -9,6 +9,8 @@ import java.util.stream.Stream;
 
 @Repository
 public interface ProposalRepository extends JpaRepository<Proposal, Long> {
+
     Stream<Proposal> findByJob(Job job);
     Stream<Proposal> findByPaymentAmountBetween(Double minValue, Double maxValue);
+
 }

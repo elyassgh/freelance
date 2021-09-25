@@ -3,9 +3,9 @@ package freelance.platform.api.wsRest;
 import freelance.platform.api.dto.PaymentTypeDto;
 import freelance.platform.api.service.PaymentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/freelance-api/v1/payment-type")
@@ -35,8 +35,8 @@ public class PaymentTypeRest {
     }
 
     @GetMapping("/find/all")
-    public Page<PaymentTypeDto> findAll(Pageable pageable) {
-        return service.findAll(pageable);
+    public List<PaymentTypeDto> findAll() {
+        return service.findAll();
     }
 
     @DeleteMapping("/delete/id/{id}")

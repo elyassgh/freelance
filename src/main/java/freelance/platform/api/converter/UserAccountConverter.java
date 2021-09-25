@@ -32,7 +32,6 @@ public class UserAccountConverter {
                 .lastName(userAccount.getLastName())
                 .email(userAccount.getEmail())
                 .password(userAccount.getPassword())
-                .createdDate(userAccount.getCreatedDate())
                 .modifiedDate(userAccount.getModifiedDate())
                 .build();
     }

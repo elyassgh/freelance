@@ -25,7 +25,7 @@ public class TestResult implements Serializable {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "freelancer_id")
+    @JoinColumn(name = "user_account_id")
     private Freelancer freelancer;
 
     @ManyToOne

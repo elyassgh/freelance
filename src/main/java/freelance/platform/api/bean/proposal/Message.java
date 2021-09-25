@@ -38,11 +38,11 @@ public class Message implements Serializable {
     private String messageText;
 
     @ManyToOne
-    @JoinColumn(name = "freelancer_id")
+    @JoinColumn(name = "user_account_id")
     private Freelancer freelancer;
 
     @ManyToOne
-    @JoinColumn(name = "hire_manager_id")
+    @JoinColumn(name = "manager_account_id")
     private Manager manager;
 
 }

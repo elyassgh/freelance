@@ -2,7 +2,6 @@ package freelance.platform.api.converter.freelancer;
 
 import freelance.platform.api.bean.freelancer.Certification;
 import freelance.platform.api.dto.freelancer.CertificationDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
@@ -12,9 +11,6 @@ import java.util.stream.Stream;
 
 @Component
 public class CertificationConverter {
-
-    @Autowired
-    FreelancerConverter freelancerConverter;
 
     public Certification toEntity(CertificationDto dto) {
         return Certification.builder().id(dto.getId())
@@ -37,7 +33,7 @@ public class CertificationConverter {
                 .certificationProvider(certification.getCertificationProvider())
                 .description(certification.getDescription())
                 .dateEarned(certification.getDateEarned())
-                .freelancer(freelancerConverter.toDto(certification.getFreelancer()))
+                 //.freelancer(freelancerConverter.toDto(certification.getFreelancer()))
                 .build();
     }
 

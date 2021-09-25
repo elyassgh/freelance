@@ -14,9 +14,8 @@ public interface JobService {
     public JobDto update(long id, JobDto dto);
 
     public Stream<JobDto> findByManager(long managerId);
-    public Stream<JobDto> findBySkill(long skillId);
-    public Stream<JobDto> findByPaymentAmountIsGreaterThanEqual(Double minValue);
-    public Stream<JobDto> findByDescriptionContains(String query);
+    public Page<JobDto> findBySkill(long skillId, Pageable pageable);
+    public Page<JobDto> findByPaymentAmountIsGreaterThanEqual(Double minValue, Pageable pageable);
     public Optional<Job> findById(long id);
     public JobDto findByIdDto(long id);
     public Page<JobDto> findAll(Pageable pageable);

@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -18,11 +18,11 @@ public class FreelancerDto {
 
     private Long id;
     private UserAccountDto account;
-    private LocalDate registrationDate;
+    private LocalDateTime registrationDate;
     private String location;
     private String bio;
-    private List<CertificationDto> certifications;
     private List<SkillDto> skills;
+    private List<CertificationDto> certifications;
     // private List<ContractDto> contracts;
 
 }

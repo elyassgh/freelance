@@ -5,6 +5,7 @@ import freelance.platform.api.service.client.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,11 +29,13 @@ public class ManagerRest {
     }
 
     @GetMapping("/find/company/{companyId}")
+    @Transactional(readOnly = true)
     public List<ManagerDto> findByCompany(@PathVariable Long companyId) {
         return service.findByCompany(companyId).collect(Collectors.toList());
     }
 
     @GetMapping("/find/location/{location}")
+    @Transactional(readOnly = true)
     public List<ManagerDto> findByLocation(@PathVariable String location) {
         return service.findByLocation(location).collect(Collectors.toList());
     }

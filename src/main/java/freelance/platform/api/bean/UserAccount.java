@@ -1,12 +1,12 @@
 package freelance.platform.api.bean;
 
+import freelance.platform.api.bean.client.Manager;
+import freelance.platform.api.bean.freelancer.Freelancer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "user_accounts")
-@EntityListeners(AuditingEntityListener.class)
 @Data
 @Builder
 @NoArgsConstructor
@@ -43,12 +42,16 @@ public class UserAccount implements Serializable {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(name = "created_date", nullable = false, updatable = false)
-    @CreatedDate
-    private LocalDateTime createdDate;
-
     @Column(name = "modified_date")
-    @LastModifiedDate
+    @UpdateTimestamp
     private LocalDateTime modifiedDate;
+
+    @OneToOne(mappedBy = "account", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @PrimaryKeyJoinColumn
+    private Manager manager;
+
+    @OneToOne(mappedBy = "account", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @PrimaryKeyJoinColumn
+    private Freelancer freelancer;
 
 }

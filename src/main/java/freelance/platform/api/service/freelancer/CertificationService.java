@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public interface CertificationService {
 
-    public CertificationDto save(CertificationDto dto);
+    public CertificationDto save(long freelancerId, CertificationDto dto);
     public CertificationDto update(long id, CertificationDto dto);
 
     public Stream<CertificationDto> findByCertificationNameContains(String name);

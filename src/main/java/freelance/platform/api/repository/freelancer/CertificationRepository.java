@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 @Repository
 public interface CertificationRepository extends JpaRepository<Certification, Long> {
+
     Stream<Certification> findByCertificationNameContains(String name);
     Stream<Certification> findByCertificationProviderContains(String provider);
     Stream<Certification> findByFreelancer(Freelancer freelancer);

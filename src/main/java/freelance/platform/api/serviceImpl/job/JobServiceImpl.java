@@ -45,7 +45,30 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public JobDto save(JobDto dto) {
+        Skill skill = skillService.findById(dto.getSkill().getId()).orElseThrow(() -> new RuntimeException("not found"));
+        Duration duration = durationService.findById(dto.getDuration().getId()).orElseThrow(() -> new RuntimeException("not found"));
+        Complexity complexity = complexityService.findById(dto.getComplexity().getId()).orElseThrow(() -> new RuntimeException("not found"));
+        PaymentType paymentType = paymentTypeService.findById(dto.getPaymentType().getId()).orElseThrow(() -> new RuntimeException("not found"));
+        Manager manager = managerService.findById(dto.getManager()).orElseThrow(() -> new RuntimeException("not found"));
+
         Job job = converter.toEntity(dto);
+
+        job.setSkill(skill);
+        job.setDuration(duration);
+        job.setComplexity(complexity);
+        job.setPaymentType(paymentType);
+        job.setManager(manager);
+        job.setProposals(new ArrayList<>());
+
+        if (dto.getOtherSkills() != null && !dto.getOtherSkills().isEmpty()) {
+            List<Skill> skills = new ArrayList<>();
+            dto.getOtherSkills().forEach(elem -> {
+                Skill s = skillService.findById(elem.getId()).orElseThrow(() -> new RuntimeException("not found"));
+                skills.add(s);
+            });
+            job.setOtherSkills(skills);
+        }
+
         return converter.toDto(repository.save(job));
     }
 
@@ -71,7 +94,7 @@ public class JobServiceImpl implements JobService {
             job.setSkill(skill);
         }
         if (dto.getOtherSkills() != null && !dto.getOtherSkills().isEmpty()) {
-            List<Skill> skills = new ArrayList<Skill>();
+            List<Skill> skills = new ArrayList<>();
             dto.getOtherSkills().forEach(elem -> {
                 Skill skill = skillService.findById(elem.getId()).orElseThrow(() -> new RuntimeException("not found"));
                 skills.add(skill);
@@ -88,19 +111,14 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Stream<JobDto> findBySkill(long skillId) {
+    public Page<JobDto> findBySkill(long skillId, Pageable pageable) {
         Skill skill = skillService.findById(skillId).orElseThrow(() -> new RuntimeException("not found"));
-        return converter.toDtosStream(repository.findBySkill(skill));
+        return converter.toDtosPage(repository.findBySkill(skill, pageable));
     }
 
     @Override
-    public Stream<JobDto> findByPaymentAmountIsGreaterThanEqual(Double minValue) {
-        return converter.toDtosStream(repository.findByPaymentAmountIsGreaterThanEqual(minValue));
-    }
-
-    @Override
-    public Stream<JobDto> findByDescriptionContains(String query) {
-        return converter.toDtosStream(repository.findByDescriptionContains(query));
+    public Page<JobDto> findByPaymentAmountIsGreaterThanEqual(Double minValue, Pageable pageable) {
+        return converter.toDtosPage(repository.findByPaymentAmountIsGreaterThanEqual(minValue, pageable));
     }
 
     @Override

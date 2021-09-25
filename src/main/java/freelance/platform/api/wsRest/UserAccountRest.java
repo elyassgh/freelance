@@ -14,11 +14,6 @@ public class UserAccountRest {
     @Autowired
     UserAccountService service;
 
-    @PostMapping("/save")
-    public UserAccountDto save(@RequestBody UserAccountDto dto) {
-        return service.save(dto);
-    }
-
     @PutMapping("/update/id/{id}")
     public UserAccountDto update(@PathVariable long id, @RequestBody UserAccountDto dto) {
         return service.update(id, dto);

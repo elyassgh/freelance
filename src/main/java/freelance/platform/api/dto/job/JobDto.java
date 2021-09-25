@@ -2,7 +2,6 @@ package freelance.platform.api.dto.job;
 
 import freelance.platform.api.dto.PaymentTypeDto;
 import freelance.platform.api.dto.SkillDto;
-import freelance.platform.api.dto.client.ManagerDto;
 import freelance.platform.api.dto.proposal.ProposalDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +18,7 @@ public class JobDto {
 
     private Long id;
     private String description;
-    private ManagerDto manager;
+    private long manager;
     private ComplexityDto complexity;
     private DurationDto duration;
     private PaymentTypeDto paymentType;

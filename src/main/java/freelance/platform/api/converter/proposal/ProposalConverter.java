@@ -2,8 +2,6 @@ package freelance.platform.api.converter.proposal;
 
 import freelance.platform.api.bean.proposal.Proposal;
 import freelance.platform.api.converter.PaymentTypeConverter;
-import freelance.platform.api.converter.client.CompanyConverter;
-import freelance.platform.api.converter.freelancer.FreelancerConverter;
 import freelance.platform.api.dto.proposal.ProposalDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,10 +16,6 @@ public class ProposalConverter {
 
     @Autowired
     PaymentTypeConverter paymentTypeConverter;
-    @Autowired
-    FreelancerConverter freelancerConverter;
-    @Autowired
-    CompanyConverter companyConverter;
 
     public Proposal toEntity(ProposalDto dto) {
         return Proposal.builder().id(dto.getId())

@@ -5,6 +5,7 @@ import freelance.platform.api.service.proposal.ProposalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +18,9 @@ public class ProposalRest {
     @Autowired
     ProposalService service;
 
-    @PostMapping("/save")
-    public ProposalDto save(@RequestBody ProposalDto dto) {
-        return service.save(dto);
+    @PostMapping("/save/job/{jobId}")
+    public ProposalDto save(@PathVariable long jobId, @RequestBody ProposalDto dto) {
+        return service.save(jobId, dto);
     }
 
     @PutMapping("/update/id/{id}")
@@ -28,11 +29,13 @@ public class ProposalRest {
     }
 
     @GetMapping("/find/all/job/{jobId}")
+    @Transactional(readOnly = true)
     public List<ProposalDto> findByJob(@PathVariable long jobId) {
         return service.findByJob(jobId).collect(Collectors.toList());
     }
 
     @GetMapping("/find/all/payment-amount")
+    @Transactional(readOnly = true)
     public List<ProposalDto> findByPaymentAmountBetween(@RequestParam(name = "min") Double minValue,
                                                           @RequestParam(name = "min") Double maxValue) {
         return service.findByPaymentAmountBetween(minValue, maxValue).collect(Collectors.toList());

@@ -6,10 +6,9 @@ import freelance.platform.api.dto.PaymentTypeDto;
 import freelance.platform.api.repository.PaymentTypeRepository;
 import freelance.platform.api.service.PaymentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -50,8 +49,8 @@ public class PaymentTypeServiceImpl implements PaymentTypeService {
     }
 
     @Override
-    public Page<PaymentTypeDto> findAll(Pageable pageable) {
-        return converter.toDtosPage(repository.findAll(pageable));
+    public List<PaymentTypeDto> findAll() {
+        return converter.toDtos(repository.findAll());
     }
 
     @Override

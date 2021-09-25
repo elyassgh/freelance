@@ -19,7 +19,6 @@ public class UserAccountDto {
     private String email;
     private String firstName;
     private String lastName;
-    private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 
 }

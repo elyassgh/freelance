@@ -5,6 +5,7 @@ import freelance.platform.api.service.freelancer.CertificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +18,10 @@ public class CertificationRest {
     @Autowired
     CertificationService service;
 
-    @PostMapping("/save")
-    public CertificationDto save(@RequestBody CertificationDto dto) {
-        return service.save(dto);
+    @PostMapping("/save/freelancer/{freelancerId}")
+    public CertificationDto save(@PathVariable long freelancerId,
+                                 @RequestBody CertificationDto dto) {
+        return service.save(freelancerId, dto);
     }
 
     @PutMapping("/update/id/{id}")
@@ -28,16 +30,19 @@ public class CertificationRest {
     }
 
     @GetMapping("/find/all/name/{name}")
+    @Transactional(readOnly = true)
     public List<CertificationDto> findByCertificationNameContains(@PathVariable String name) {
         return service.findByCertificationNameContains(name).collect(Collectors.toList());
     }
 
     @GetMapping("/find/all/provider/{provider}")
+    @Transactional(readOnly = true)
     public List<CertificationDto> findByCertificationProviderContains(@PathVariable String provider) {
         return service.findByCertificationProviderContains(provider).collect(Collectors.toList());
     }
 
     @GetMapping("/find/all/freelancer/{freelancerId}")
+    @Transactional(readOnly = true)
     public List<CertificationDto> findByFreelancer(@PathVariable long freelancerId) {
         return service.findByFreelancer(freelancerId).collect(Collectors.toList());
     }

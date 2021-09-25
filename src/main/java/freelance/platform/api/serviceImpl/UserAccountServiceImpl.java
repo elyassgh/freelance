@@ -23,10 +23,10 @@ public class UserAccountServiceImpl implements UserAccountService {
     UserAccountConverter converter;
 
     @Override
-    public UserAccountDto save(UserAccountDto dto) {
+    public UserAccount save(UserAccountDto dto) {
         log.info("save userAccount service Impl");
         UserAccount userAccount = converter.toEntity(dto);
-        return converter.toDto(repository.save(userAccount));
+        return repository.save(userAccount);
     }
 
     @Override
@@ -34,25 +34,25 @@ public class UserAccountServiceImpl implements UserAccountService {
         log.info("update userAccount service Impl");
         log.info("dto data : {} ", dto.toString());
         UserAccount userAccount = repository.findById(id).orElseThrow(() -> new RuntimeException("not found"));
-        if(dto.getEmail() != null) userAccount.setEmail(dto.getEmail());
-        if(dto.getUserName() != null)userAccount.setUserName(dto.getUserName());
-        if(dto.getFirstName() != null)userAccount.setFirstName(dto.getFirstName());
-        if(dto.getLastName() != null)userAccount.setLastName(dto.getLastName());
-        if(dto.getPassword() != null)userAccount.setPassword(dto.getPassword());
+        if (dto.getEmail() != null) userAccount.setEmail(dto.getEmail());
+        if (dto.getUserName() != null) userAccount.setUserName(dto.getUserName());
+        if (dto.getFirstName() != null) userAccount.setFirstName(dto.getFirstName());
+        if (dto.getLastName() != null) userAccount.setLastName(dto.getLastName());
+        if (dto.getPassword() != null) userAccount.setPassword(dto.getPassword());
         return converter.toDto(repository.save(userAccount));
     }
 
     @Override
     public UserAccountDto findByUserName(String userName) {
         log.info("findByUserName userAccount service Impl");
-        UserAccount userAccount = repository.findByUserName(userName).orElseThrow(()-> new RuntimeException("not found !"));
+        UserAccount userAccount = repository.findByUserName(userName).orElseThrow(() -> new RuntimeException("not found !"));
         return converter.toDto(userAccount);
     }
 
     @Override
     public UserAccountDto findByEmail(String email) {
         log.info("findByEmail userAccount service Impl");
-        UserAccount userAccount = repository.findByEmail(email).orElseThrow(()-> new RuntimeException("not found !"));
+        UserAccount userAccount = repository.findByEmail(email).orElseThrow(() -> new RuntimeException("not found !"));
         return converter.toDto(userAccount);
     }
 
@@ -64,11 +64,11 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     // for external use ( api end points and so)
-   @Override
+    @Override
     public UserAccountDto findByIdDto(long id) {
-       log.info("findByIdDto userAccount service Impl");
-       UserAccount userAccount = repository.findById(id).orElseThrow(() -> new RuntimeException("not found"));
-       return converter.toDto(userAccount);
+        log.info("findByIdDto userAccount service Impl");
+        UserAccount userAccount = repository.findById(id).orElseThrow(() -> new RuntimeException("not found"));
+        return converter.toDto(userAccount);
     }
 
     @Override

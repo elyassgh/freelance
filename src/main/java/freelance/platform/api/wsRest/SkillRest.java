@@ -5,6 +5,7 @@ import freelance.platform.api.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class SkillRest {
     public SkillDto save(@RequestBody SkillDto dto) {
         return service.save(dto);
     }
+
     @PutMapping("/update/id/{id}")
     public SkillDto update(@PathVariable long id, @RequestBody SkillDto dto) {
         return service.update(id, dto);
@@ -32,6 +34,7 @@ public class SkillRest {
     }
 
     @GetMapping("/find/all/skill-name")
+    @Transactional(readOnly = true)
     public List<SkillDto> findBySkillNameContains(@RequestParam(name = "skillName") String skillName) {
         return service.findBySkillNameContains(skillName).collect(Collectors.toList());
     }

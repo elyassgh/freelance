@@ -22,11 +22,12 @@ public class Manager implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_account_id")
     private Long id;
-    
+
     @OneToOne
-    @JoinColumn(name = "account_id")
+    @MapsId
+    @JoinColumn(name = "user_account_id")
     private UserAccount account;
 
     @Column(nullable = false)
@@ -36,7 +37,7 @@ public class Manager implements Serializable {
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @CreationTimestamp()
+    @CreationTimestamp
     @Column(name = "registration_date")
     private LocalDateTime registeredAt;
 }

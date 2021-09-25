@@ -26,8 +26,8 @@ public class CertificationServiceImpl implements CertificationService {
     FreelancerService freelancerService;
 
     @Override
-    public CertificationDto save(CertificationDto dto) {
-        Freelancer freelancer = freelancerService.findById(dto.getFreelancer().getId()).orElseThrow(()-> new RuntimeException("not found"));
+    public CertificationDto save(long freelancerId, CertificationDto dto) {
+        Freelancer freelancer = freelancerService.findById(freelancerId).orElseThrow(()-> new RuntimeException("not found"));
         Certification certification = converter.toEntity(dto);
         certification.setFreelancer(freelancer);
         return converter.toDto(repository.save(certification));
@@ -52,7 +52,7 @@ public class CertificationServiceImpl implements CertificationService {
 
     @Override
     public Stream<CertificationDto> findByCertificationProviderContains(String provider) {
-        return converter.toDtosStream(repository.findByCertificationNameContains(provider));
+        return converter.toDtosStream(repository.findByCertificationProviderContains(provider));
     }
 
     @Override

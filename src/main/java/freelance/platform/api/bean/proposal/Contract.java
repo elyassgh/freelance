@@ -39,7 +39,7 @@ public class Contract implements Serializable {
     private Company company;
 
     @ManyToOne
-    @JoinColumn(name = "freelancer_id")
+    @JoinColumn(name = "user_account_id")
     private Freelancer freelancer;
 
     @ManyToOne

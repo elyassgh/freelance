@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public interface ProposalService {
 
-    public ProposalDto save(ProposalDto dto);
+    public ProposalDto save(long jobId, ProposalDto dto);
     public ProposalDto update(long id, ProposalDto dto);
 
     public Stream<ProposalDto> findByJob(long jobId);

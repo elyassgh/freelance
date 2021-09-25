@@ -16,10 +16,9 @@ public class CertificationDto {
     private Long id;
     private String certificationName;
     private String certificationProvider;
-    private FreelancerDto freelancer;
+    // private FreelancerDto freelancer;
     private String description;
     private LocalDate dateEarned;
     private String certificationLink;
-
 
 }

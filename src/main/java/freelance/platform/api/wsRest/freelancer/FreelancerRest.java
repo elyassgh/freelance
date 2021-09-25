@@ -5,6 +5,7 @@ import freelance.platform.api.service.freelancer.FreelancerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,11 +34,13 @@ public class FreelancerRest {
     }
 
     @GetMapping("/find/all/location/{location}")
+    @Transactional(readOnly = true)
     public List<FreelancerDto> findByLocation(@PathVariable String location) {
         return service.findByLocation(location).collect(Collectors.toList());
     }
 
     @GetMapping("/find/all/bio")
+    @Transactional(readOnly = true)
     public List<FreelancerDto> findByBioContains(@RequestParam(name = "keyword") String keyword) {
         return service.findByBioContains(keyword).collect(Collectors.toList());
     }

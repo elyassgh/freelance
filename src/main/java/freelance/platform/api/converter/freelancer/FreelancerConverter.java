@@ -26,8 +26,6 @@ public class FreelancerConverter {
         return Freelancer.builder().id(dto.getId())
                 .bio(dto.getBio())
                 .location(dto.getLocation())
-                .registrationDate(dto.getRegistrationDate())
-                .skills(skillConverter.toEntities(dto.getSkills()))
                 .build();
     }
 
@@ -41,9 +39,9 @@ public class FreelancerConverter {
                 .location(freelancer.getLocation())
                 .bio(freelancer.getBio())
                 .registrationDate(freelancer.getRegistrationDate())
-                //.contracts(contractConverter.toDtos(freelancer.getContracts()))
                 .skills(skillConverter.toDtos(freelancer.getSkills()))
                 .certifications(certificationConverter.toDtos(freelancer.getCertifications()))
+                //.contracts(contractConverter.toDtos(freelancer.getContracts()))
                 .build();
     }
 

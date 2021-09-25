@@ -7,11 +7,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -25,17 +25,17 @@ public class Freelancer implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "freelancer_id")
+    @Column(name = "user_account_id")
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "account_id")
+    @MapsId
+    @JoinColumn(name = "user_account_id")
     private UserAccount account;
 
     @Column(name = "registration_date", nullable = false, updatable = false)
-    @CreatedDate
-    private LocalDate registrationDate;
+    @CreationTimestamp
+    private LocalDateTime registrationDate;
 
     // County (Ex : Morocco)
     @Column(nullable = false)
@@ -44,16 +44,16 @@ public class Freelancer implements Serializable {
     @Column(length = 512)
     private String bio;
 
-    @OneToMany(mappedBy = "freelancer")
+    @OneToMany(mappedBy = "freelancer", cascade = CascadeType.REMOVE ,orphanRemoval = true)
     private List<Certification> certifications;
 
     @ManyToMany
     @JoinTable(name = "has_skill",
-        joinColumns = @JoinColumn(name = "freelancer_id" , referencedColumnName = "freelancer_id" ),
-        inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "skill_id"))
+            joinColumns = @JoinColumn(name = "user_account_id", referencedColumnName = "user_account_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "skill_id"))
     private List<Skill> skills;
 
     @OneToMany(mappedBy = "freelancer")
     private List<Contract> contracts;
-    
+
 }

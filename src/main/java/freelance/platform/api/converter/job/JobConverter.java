@@ -4,6 +4,7 @@ import freelance.platform.api.bean.job.Job;
 import freelance.platform.api.converter.PaymentTypeConverter;
 import freelance.platform.api.converter.SkillConverter;
 import freelance.platform.api.converter.client.ManagerConverter;
+import freelance.platform.api.converter.proposal.ProposalConverter;
 import freelance.platform.api.dto.job.JobDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,17 +27,13 @@ public class JobConverter {
     SkillConverter skillConverter;
     @Autowired
     ManagerConverter managerConverter;
+    @Autowired
+    ProposalConverter proposalConverter;
 
     public Job toEntity(JobDto dto) {
         return Job.builder().id(dto.getId())
                 .description(dto.getDescription())
                 .paymentAmount(dto.getPaymentAmount())
-                .complexity(complexityConverter.toEntity(dto.getComplexity()))
-                .duration(durationConverter.toEntity(dto.getDuration()))
-                .paymentType(paymentTypeConverter.toEntity(dto.getPaymentType()))
-                .manager(managerConverter.toEntity(dto.getManager()))
-                .skill(skillConverter.toEntity(dto.getSkill()))
-                .otherSkills(skillConverter.toEntities(dto.getOtherSkills()))
                 .build();
     }
 
@@ -51,9 +48,8 @@ public class JobConverter {
                 .paymentType(paymentTypeConverter.toDto(job.getPaymentType()))
                 .complexity(complexityConverter.toDto(job.getComplexity()))
                 .duration(durationConverter.toDto(job.getDuration()))
-                .manager(managerConverter.toDto(job.getManager()))
-                // dont forget proposals
-                // .proposals(proposalConverter.toDto(job.getProposals()))
+                .manager(job.getManager().getId())
+                .proposals(proposalConverter.toDtos(job.getProposals()))
                 .skill(skillConverter.toDto(job.getSkill()))
                 .otherSkills(skillConverter.toDtos(job.getOtherSkills()))
                 .build();

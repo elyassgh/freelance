@@ -15,7 +15,7 @@ public class CompanyRest {
     CompanyService service;
 
     @PostMapping("/save")
-    public CompanyDto save(CompanyDto dto) {
+    public CompanyDto save(@RequestBody CompanyDto dto) {
         return service.save(dto);
     }
 

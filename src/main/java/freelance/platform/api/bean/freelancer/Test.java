@@ -23,7 +23,7 @@ public class Test implements Serializable {
     @Column(name = "test_id")
     private Long id;
     
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String testName;
 
     // URLs over 2,000 characters will not work in the most web browsers

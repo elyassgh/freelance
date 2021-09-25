@@ -30,8 +30,8 @@ public class ProposalServiceImpl implements ProposalService {
     PaymentTypeService paymentTypeService;
 
     @Override
-    public ProposalDto save(ProposalDto dto) {
-        Job job = jobService.findById(dto.getJob().getId()).orElseThrow(() -> new RuntimeException("not found"));
+    public ProposalDto save(long jobId, ProposalDto dto) {
+        Job job = jobService.findById(jobId).orElseThrow(() -> new RuntimeException("not found"));
         PaymentType paymentType = paymentTypeService.findById(dto.getPaymentType().getId()).orElseThrow(() -> new RuntimeException("not found"));
         Proposal proposal = converter.toEntity(dto);
         proposal.setJob(job);
