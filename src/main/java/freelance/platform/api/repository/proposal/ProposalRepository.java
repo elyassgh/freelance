@@ -1,5 +1,6 @@
 package freelance.platform.api.repository.proposal;
 
+import freelance.platform.api.bean.freelancer.Freelancer;
 import freelance.platform.api.bean.job.Job;
 import freelance.platform.api.bean.proposal.Proposal;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,6 +12,7 @@ import java.util.stream.Stream;
 public interface ProposalRepository extends JpaRepository<Proposal, Long> {
 
     Stream<Proposal> findByJob(Job job);
+    Stream<Proposal> findByFreelancer(Freelancer freelancer);
     Stream<Proposal> findByPaymentAmountBetween(Double minValue, Double maxValue);
 
 }

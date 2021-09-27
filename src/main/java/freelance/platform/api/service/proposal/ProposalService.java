@@ -10,10 +10,11 @@ import java.util.stream.Stream;
 
 public interface ProposalService {
 
-    public ProposalDto save(long jobId, ProposalDto dto);
+    public ProposalDto save(long jobId, long freelancerId, ProposalDto dto);
     public ProposalDto update(long id, ProposalDto dto);
 
     public Stream<ProposalDto> findByJob(long jobId);
+    public Stream<ProposalDto> findByFreelancer(long freelancerId);
     public Stream<ProposalDto> findByPaymentAmountBetween(Double minValue, Double maxValue);
     public Optional<Proposal> findById(long id);
     public ProposalDto findByIdDto(long id);

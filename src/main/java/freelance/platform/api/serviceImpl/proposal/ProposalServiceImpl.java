@@ -1,12 +1,14 @@
 package freelance.platform.api.serviceImpl.proposal;
 
 import freelance.platform.api.bean.PaymentType;
+import freelance.platform.api.bean.freelancer.Freelancer;
 import freelance.platform.api.bean.job.Job;
 import freelance.platform.api.bean.proposal.Proposal;
 import freelance.platform.api.converter.proposal.ProposalConverter;
 import freelance.platform.api.dto.proposal.ProposalDto;
 import freelance.platform.api.repository.proposal.ProposalRepository;
 import freelance.platform.api.service.PaymentTypeService;
+import freelance.platform.api.service.freelancer.FreelancerService;
 import freelance.platform.api.service.job.JobService;
 import freelance.platform.api.service.proposal.ProposalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +30,18 @@ public class ProposalServiceImpl implements ProposalService {
     JobService jobService;
     @Autowired
     PaymentTypeService paymentTypeService;
+    @Autowired
+    FreelancerService freelancerService;
 
     @Override
-    public ProposalDto save(long jobId, ProposalDto dto) {
+    public ProposalDto save(long jobId, long freelancerId, ProposalDto dto) {
         Job job = jobService.findById(jobId).orElseThrow(() -> new RuntimeException("not found"));
+        Freelancer freelancer = freelancerService.findById(freelancerId).orElseThrow(() -> new RuntimeException("not found"));
         PaymentType paymentType = paymentTypeService.findById(dto.getPaymentType().getId()).orElseThrow(() -> new RuntimeException("not found"));
         Proposal proposal = converter.toEntity(dto);
         proposal.setJob(job);
         proposal.setPaymentType(paymentType);
+        proposal.setFreelancer(freelancer);
         return converter.toDto(repository.save(proposal));
     }
 
@@ -58,6 +64,12 @@ public class ProposalServiceImpl implements ProposalService {
     public Stream<ProposalDto> findByJob(long jobId) {
         Job job = jobService.findById(jobId).orElseThrow(() -> new RuntimeException("not found"));
         return converter.toDtosStream(repository.findByJob(job));
+    }
+
+    @Override
+    public Stream<ProposalDto> findByFreelancer(long freelancerId) {
+        Freelancer freelancer = freelancerService.findById(freelancerId).orElseThrow(() -> new RuntimeException("not found"));
+        return converter.toDtosStream(repository.findByFreelancer(freelancer));
     }
 
     @Override

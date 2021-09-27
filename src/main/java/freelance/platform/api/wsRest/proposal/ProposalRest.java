@@ -18,9 +18,11 @@ public class ProposalRest {
     @Autowired
     ProposalService service;
 
-    @PostMapping("/save/job/{jobId}")
-    public ProposalDto save(@PathVariable long jobId, @RequestBody ProposalDto dto) {
-        return service.save(jobId, dto);
+    @PostMapping("/save/job/{jobId}/freelancer/{freelancerId}")
+    public ProposalDto save(@PathVariable long jobId,
+                            @PathVariable long freelancerId,
+                            @RequestBody ProposalDto dto) {
+        return service.save(jobId, freelancerId, dto);
     }
 
     @PutMapping("/update/id/{id}")
@@ -32,6 +34,12 @@ public class ProposalRest {
     @Transactional(readOnly = true)
     public List<ProposalDto> findByJob(@PathVariable long jobId) {
         return service.findByJob(jobId).collect(Collectors.toList());
+    }
+
+    @GetMapping("/find/all/freelancer/{freelancerId}")
+    @Transactional(readOnly = true)
+    public List<ProposalDto> findByFreelancer(@PathVariable long freelancerId) {
+        return service.findByFreelancer(freelancerId).collect(Collectors.toList());
     }
 
     @GetMapping("/find/all/payment-amount")

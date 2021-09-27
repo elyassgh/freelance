@@ -1,6 +1,7 @@
 package freelance.platform.api.bean.proposal;
 
 import freelance.platform.api.bean.PaymentType;
+import freelance.platform.api.bean.freelancer.Freelancer;
 import freelance.platform.api.bean.job.Job;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -51,6 +52,10 @@ public class Proposal implements Serializable {
     @ManyToOne
     @JoinColumn(name = "job_id", nullable = false)
     private Job job;
+
+    @ManyToOne
+    @JoinColumn(name = "freelancer_id", nullable = false)
+    private Freelancer freelancer;
 
     @ManyToOne
     @JoinColumn(name = "payment_type_id", nullable = false)

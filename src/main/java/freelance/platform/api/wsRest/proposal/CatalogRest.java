@@ -29,7 +29,7 @@ public class CatalogRest {
         return service.findByIdDto(id);
     }
 
-    @GetMapping("/find/all}")
+    @GetMapping("/find/all")
     public List<CatalogDto> findAll() {
         return service.findAll();
     }

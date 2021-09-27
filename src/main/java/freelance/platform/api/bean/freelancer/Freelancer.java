@@ -3,6 +3,7 @@ package freelance.platform.api.bean.freelancer;
 import freelance.platform.api.bean.Skill;
 import freelance.platform.api.bean.UserAccount;
 import freelance.platform.api.bean.proposal.Contract;
+import freelance.platform.api.bean.proposal.Proposal;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -44,16 +45,19 @@ public class Freelancer implements Serializable {
     @Column(length = 512)
     private String bio;
 
-    @OneToMany(mappedBy = "freelancer", cascade = CascadeType.REMOVE ,orphanRemoval = true)
-    private List<Certification> certifications;
-
     @ManyToMany
     @JoinTable(name = "has_skill",
             joinColumns = @JoinColumn(name = "user_account_id", referencedColumnName = "user_account_id"),
             inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "skill_id"))
     private List<Skill> skills;
 
+    @OneToMany(mappedBy = "freelancer", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Certification> certifications;
+
     @OneToMany(mappedBy = "freelancer")
     private List<Contract> contracts;
+
+    @OneToMany(mappedBy = "freelancer", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Proposal> proposals;
 
 }

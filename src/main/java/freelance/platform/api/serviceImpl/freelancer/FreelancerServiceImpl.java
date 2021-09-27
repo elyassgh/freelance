@@ -42,6 +42,7 @@ public class FreelancerServiceImpl implements FreelancerService {
         freelancer.setAccount(account);
         freelancer.setSkills(new ArrayList<>());
         freelancer.setCertifications(new ArrayList<>());
+        freelancer.setProposals(new ArrayList<>());
         if (dto.getSkills() != null && !dto.getSkills().isEmpty()) {
             List<Skill> skills = new ArrayList<>();
             dto.getSkills().forEach(elem -> {
